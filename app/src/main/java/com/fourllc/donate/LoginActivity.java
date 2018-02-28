@@ -1,9 +1,13 @@
 package com.fourllc.donate;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -14,7 +18,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
+import java.util.HashMap;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -68,15 +75,14 @@ public class LoginActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 Toast.makeText(getApplicationContext(), "SIGNED IN SUCCESSFULLY", Toast.LENGTH_LONG).show();
 
-                //write user to Firebase
-//                if (mAuth.getCurrentUser() != null) {
-//                    HashMap<String, Object> map = new HashMap<>();
-//                    map.put("TEST USER ", mAuth.getCurrentUser());
-//                    mUserRef.push().updateChildren(map);
-//                } else {
-//                    //not signed in
-//                }
-                finish();
+                //write user to Firebase Users node
+                if (mAuth.getCurrentUser() != null) {
+                    HashMap<String, Object> map = new HashMap<>();
+                    map.put("TEST USER ", mAuth.getCurrentUser());
+                    mUserRef.push().updateChildren(map);
+                } else {
+                    //not signed in
+                }
                 return;
             } else {
                 // Sign in failed

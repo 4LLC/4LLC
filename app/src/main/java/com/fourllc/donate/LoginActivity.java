@@ -52,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
 
         startActivityForResult(AuthUI.getInstance()
                 .createSignInIntentBuilder()
+                .setIsSmartLockEnabled(false)
                 .setAvailableProviders(Arrays.asList(
                         new AuthUI.IdpConfig.EmailBuilder().build(),
                         new AuthUI.IdpConfig.GoogleBuilder().build(),
@@ -75,15 +76,19 @@ public class LoginActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 Toast.makeText(getApplicationContext(), "SIGNED IN SUCCESSFULLY", Toast.LENGTH_LONG).show();
 
-                //write user to Firebase Users node
+
                 if (mAuth.getCurrentUser() != null) {
                     HashMap<String, Object> map = new HashMap<>();
-                    map.put("TEST USER ", mAuth.getCurrentUser());
-                    mUserRef.push().updateChildren(map);
+                    map.put(mAuth.getUid(), mAuth.getCurrentUser());
+                    mUserRef.updateChildren(map);
+                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(i);
+                    finish();
                 } else {
                     //not signed in
+                    Toast.makeText(getApplicationContext(), "SIGN IN FAILED", Toast.LENGTH_LONG).show();
+                    return;
                 }
-                return;
             } else {
                 // Sign in failed
                 if (response == null) {

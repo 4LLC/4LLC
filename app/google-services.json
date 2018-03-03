@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "723316718195",
+    "firebase_url": "https://donation-13725.firebaseio.com",
+    "project_id": "donation-13725",
+    "storage_bucket": "donation-13725.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:723316718195:android:19c527b4f999e5d6",
+        "android_client_info": {
+          "package_name": "llsandroidgroup.android.donation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "723316718195-0qtihd7nujm99k99usigat2sk5ti5dvv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC39SqD-7eb4Jv4hlAgbOmOCPYc-HdJgE4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:723316718195:android:95f86e13afd3d9e0",
+        "android_client_info": {
+          "package_name": "com.fourllc.donate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "723316718195-0qtihd7nujm99k99usigat2sk5ti5dvv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC39SqD-7eb4Jv4hlAgbOmOCPYc-HdJgE4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,14 +1,11 @@
 package com.fourllc.donate;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TableLayout;
+import android.support.v7.widget.Toolbar;
 
 import com.fourllc.donate.adapters.DonateBloodLocationAdapter;
 
@@ -21,13 +18,20 @@ import com.fourllc.donate.adapters.DonateBloodLocationAdapter;
  */
 public class DonateBloodLocationActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
 
+    //toolbar is used instead of the action bar
+    private Toolbar toolbar;
     private TabLayout locationTabLayout;
     private ViewPager locationViewPager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donate_blood_location);
+
+        toolbar = (Toolbar) findViewById(R.id.tool_bar);
+
+        setSupportActionBar(toolbar);
 
         locationTabLayout = (TabLayout) findViewById(R.id.location_tab_layout);
         locationViewPager = (ViewPager) findViewById(R.id.location_view_pager);

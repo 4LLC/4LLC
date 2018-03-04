@@ -1,0 +1,25 @@
+package com.fourllc.donate.fragments;
+
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.fourllc.donate.R;
+
+/**
+ * This class is used to get the list of blood donation centers based
+ * on the centers near the home location.
+ */
+
+public class NearHomeLocationFragment extends Fragment {
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.frag_near_home_location, container, false);
+    }
+}

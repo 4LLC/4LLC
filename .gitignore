@@ -43,6 +43,7 @@ captures/
 .idea/libraries
 .idea/modules.xml
 .idea/misc.xml
+.idea/
 gradlew
 gradlew.bat
 gradle/wrapper/*.*

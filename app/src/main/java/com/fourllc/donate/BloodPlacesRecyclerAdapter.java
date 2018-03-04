@@ -1,6 +1,8 @@
 package com.fourllc.donate;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -13,13 +15,20 @@ import java.util.List;
  */
 
 public class BloodPlacesRecyclerAdapter extends RecyclerView.Adapter<BloodPlacesRecyclerAdapter.ViewHolder>{
+    private List<Result> mLocations;
 
-    public BloodPlacesRecyclerAdapter(List<Result> resultList) {
+    public BloodPlacesRecyclerAdapter(List<Result> locations) {
+        mLocations = locations;
     }
 
     @Override
     public BloodPlacesRecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        Context context = parent.getContext();
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.blood_location_list_item, parent, false);
+
+        ViewHolder viewHolder = new ViewHolder(view);
+        return viewHolder;
     }
 
     @Override
@@ -29,7 +38,10 @@ public class BloodPlacesRecyclerAdapter extends RecyclerView.Adapter<BloodPlaces
 
     @Override
     public int getItemCount() {
-        return 0;
+        if (mLocations == null) {
+            return 0;
+        }
+        return mLocations.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

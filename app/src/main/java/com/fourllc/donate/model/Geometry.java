@@ -11,16 +11,16 @@ public class Geometry {
 
     @SerializedName("location")
     @Expose
-    private Location location;
+    private PlacesLocation location;
     @SerializedName("viewport")
     @Expose
     private Viewport viewport;
 
-    public Location getLocation() {
+    public PlacesLocation getLocation() {
         return location;
     }
 
-    public void setLocation(Location location) {
+    public void setLocation(PlacesLocation location) {
         this.location = location;
     }
 

@@ -13,7 +13,12 @@ import retrofit2.http.Query;
  * by retrofit. Will define here all the entry points to the places api
  */
 
+/**
+ * this end point will query google places for blood donations within a 5KM
+ * radius of the supplied location
+ * @Param location - will be the supplied location to search nearby
+ */
 public interface PlacesService {
-    @GET("/json?&radius=5000&keyword=blood+donation&key=" + ApiUtils.API_KEY)
+    @GET("/maps/api/place/nearbysearch/json?&radius=40000&keyword=blood+donation+center&key=" + ApiUtils.API_KEY)
     Call<PlacesAnswerResponse> getPlaces(@Query("location") String location);
 }

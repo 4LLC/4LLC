@@ -7,7 +7,7 @@ package com.fourllc.donate.remote;
 
 public class ApiUtils {
     //base url for the places API - need to add type=json...
-    public static final String BASE_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/";
+    public static final String BASE_URL = "https://maps.googleapis.com";
     //api key for the places api is a free key son leaving open for now
     public static final String API_KEY = "AIzaSyCke80jFwmig6ULI7EduxmczFmy4SZo90k";
 

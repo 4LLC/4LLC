@@ -7,7 +7,7 @@ package com.fourllc.donate.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Location {
+public class PlacesLocation {
 
     @SerializedName("lat")
     @Expose

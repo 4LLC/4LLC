@@ -15,6 +15,7 @@ public class RetrofitClient {
 
     public static Retrofit getClient(String baseUrl){
         if(retrofit == null){
+            //logger to log the http request for debugging can remove for production
             HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
             OkHttpClient.Builder httpClient = new OkHttpClient.Builder();

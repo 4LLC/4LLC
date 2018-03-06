@@ -1,4 +1,4 @@
-package com.fourllc.donate.adapters;
+package com.fourllc.donate.Adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

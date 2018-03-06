@@ -9,6 +9,13 @@
     <!-- Donate Blood -->
     <string name="donate_blood_str">Donate Blood</string>
 
-    <!-- main_menu.xml -->
-    <string name="action_settings">Settings</string>
+    <!--Donate Blood List Activities-->
+    <string name="no_internet_connection_header_text">No Internet Connection</string>
+    <string name="no_internet_connection_body_text">There does not seem to be an internet connection,
+        check your device and make sure data or wifi is enabled</string>
+
+    <string name="no_location_header_text">Location Unavailable</string>
+    <string name="no_location_body_text">Unable to find your location, please allow access to your location,
+    if access was granted make sure your GPS is set to on</string>
+    <string name="location_list_try_agian">Try Again</string>
 </resources>

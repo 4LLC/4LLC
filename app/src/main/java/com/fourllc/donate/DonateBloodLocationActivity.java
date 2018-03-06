@@ -9,7 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 
-import com.fourllc.donate.adapters.DonateBloodLocationAdapter;
+import com.fourllc.donate.Adapters.DonateBloodLocationAdapter;
 
 /**
  * This class is used to display the blood donation centers based

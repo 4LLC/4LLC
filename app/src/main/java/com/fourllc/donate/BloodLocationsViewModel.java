@@ -1,4 +1,4 @@
-package com.fourllc.donate.remote;
+package com.fourllc.donate;
 
 import android.arch.lifecycle.ViewModel;
 import android.location.Location;
@@ -7,6 +7,7 @@ import android.util.Log;
 import com.fourllc.donate.BloodPlacesRecyclerAdapter;
 import com.fourllc.donate.model.PlacesAnswerResponse;
 import com.fourllc.donate.model.Result;
+import com.fourllc.donate.remote.PlacesService;
 
 import java.util.List;
 

@@ -8,4 +8,7 @@
 
     <!-- Donate Blood -->
     <string name="donate_blood_str">Donate Blood</string>
+
+    <!-- main_menu.xml -->
+    <string name="action_settings">Settings</string>
 </resources>

@@ -37,6 +37,7 @@ public class BloodLocationsViewModel extends ViewModel{
 
     public void setCurrentLocation(Location location) {
         this.mCurrentLocation = location;
+        this.getDonationLocations();
     }
 
     public PlacesService getService() {

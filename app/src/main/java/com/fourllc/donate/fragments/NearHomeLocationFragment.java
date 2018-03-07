@@ -43,7 +43,7 @@ public class NearHomeLocationFragment extends Fragment implements SharedPreferen
 
     private void loadHomeAddressFromPreferences(SharedPreferences sharedPreferences) {
         String homeAddress = sharedPreferences.getString(getString(R.string.pref_home_address_key), getString(R.string.pref_home_address_default));
-        mViewModel.setmHomeAddress(homeAddress);
+        //mViewModel.setmHomeAddress(homeAddress);
     }
 
     @Override

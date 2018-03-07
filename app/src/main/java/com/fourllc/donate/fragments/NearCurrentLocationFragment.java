@@ -23,6 +23,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,8 @@ import com.fourllc.donate.remote.ApiUtils;
 import com.google.android.gms.location.FusedLocationProviderClient;
 
 import java.util.List;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * This class is used to get the list of blood donation centers based
@@ -102,9 +105,9 @@ public class NearCurrentLocationFragment extends Fragment implements BloodPlaces
                     LocationUtils.LOCATION_PERMISSION_REQUEST);
         }else{
             //get the users location and set the ViewModel's location
-            mViewModel.setCurrentLocation(LocationUtils.getDeviceLocation(mActivity));
+            Location location = LocationUtils.getDeviceLocation(mActivity);
             //if the location is null show the noLocationErrorView
-            if(mViewModel.getCurrentLocation() == null){
+            if(location == null){
                 mPlacesList.setVisibility(View.GONE);
                 mNoLocationErrorView.setVisibility(View.VISIBLE);
             }
@@ -116,8 +119,8 @@ public class NearCurrentLocationFragment extends Fragment implements BloodPlaces
             //if all is good show the recyclerView and use the ViewModel to
             //query the Places API for donation centers
             else{
+                mViewModel.setCurrentLocation(location);
                 showListView();
-                mViewModel.getDonationLocations();
             }
         }
 
@@ -133,9 +136,8 @@ public class NearCurrentLocationFragment extends Fragment implements BloodPlaces
             case LocationUtils.LOCATION_PERMISSION_REQUEST:
                 if(grantResults.length == 2 && grantResults[0] == PackageManager.PERMISSION_GRANTED
                         && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
-                    mViewModel.setCurrentLocation(LocationUtils.getDeviceLocation(mActivity));
                     showListView();
-                    mViewModel.getDonationLocations();
+                    mViewModel.setCurrentLocation(LocationUtils.getDeviceLocation(mActivity));
                 }else {
                     mNoLocationErrorView.setVisibility(View.VISIBLE);
                 }
@@ -152,13 +154,19 @@ public class NearCurrentLocationFragment extends Fragment implements BloodPlaces
         mPlacesList.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * on click function to launch google maps for the specific location
+     * clicking the location will pull up a map zoomed into the Donation Center
+     * @param placeLocation The Result Object that has all the location Information
+     */
     @Override
     public void onItemClick(Result placeLocation) {
         PlacesLocation location = placeLocation.getGeometry().getLocation();
         String latLon = location.getLat() + "," + location.getLng();
-        String query = "geo:" + latLon + "q=" + placeLocation.getVicinity();
+        String query = "geo:" + latLon + "?q=" + placeLocation.getVicinity();
         Uri intentUri = Uri.parse(query);
         Intent intent = new Intent(Intent.ACTION_VIEW, intentUri);
+        Log.i(TAG, "onItemClick: " + query);
         startActivity(intent);
     }
 }

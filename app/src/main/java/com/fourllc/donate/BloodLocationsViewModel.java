@@ -19,6 +19,8 @@ import static android.content.ContentValues.TAG;
 
 /**
  * Created by aaronbrecher on 3/5/18.
+ * ViewModel for the location lists fragment the ViewModel will contain all
+ * the data as well as do all non UI related tasks
  */
 
 public class BloodLocationsViewModel extends ViewModel{

@@ -3,6 +3,7 @@ package com.fourllc.donate;
 import android.content.Context;
 import android.location.Location;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,8 @@ import com.fourllc.donate.model.Result;
 import java.text.DecimalFormat;
 import java.util.List;
 
+import static android.content.ContentValues.TAG;
+
 /**
  * Created by aaronbrecher on 3/4/18.
  */
@@ -22,16 +25,21 @@ import java.util.List;
 public class BloodPlacesRecyclerAdapter extends RecyclerView.Adapter<BloodPlacesRecyclerAdapter.ViewHolder>{
     private List<Result> mLocations;
     private Location mCurrentLocation;
+    private OnItemClickListener mListener;
 
+    public interface OnItemClickListener{
+        void onItemClick(Result placeLocation);
+    }
     /**
-     * The constructor for the adapter accepts 2 parameters TODO add a listener param to launch maps
+     * The constructor for the adapter accepts 2 parameters
      * @param locations the list of locations from the retrofit api request see models for all elements
      *                  root element for the list is the Result class
      * @param currentLocation an Android Location object for the users location to be used to determine distance
      */
-    public BloodPlacesRecyclerAdapter(List<Result> locations, Location currentLocation) {
+    public BloodPlacesRecyclerAdapter(List<Result> locations, Location currentLocation, OnItemClickListener listener) {
         mLocations = locations;
         mCurrentLocation = currentLocation;
+        mListener = listener;
     }
 
     @Override
@@ -54,6 +62,8 @@ public class BloodPlacesRecyclerAdapter extends RecyclerView.Adapter<BloodPlaces
         //get the distance to the location will use the android Location class to get distance
         String distance = getDistance(mCurrentLocation, currentPlace.getGeometry().getLocation());
         bindTextView(holder.mDistance, distance);
+        //TODO add data here that will allow us to use a map intent... holder.itemView.setTag();
+
     }
 
     /**
@@ -80,7 +90,7 @@ public class BloodPlacesRecyclerAdapter extends RecyclerView.Adapter<BloodPlaces
         return mLocations.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView mDistance;
         private TextView mName;
         private TextView mAdress;
@@ -94,6 +104,14 @@ public class BloodPlacesRecyclerAdapter extends RecyclerView.Adapter<BloodPlaces
             mHours = itemView.findViewById(R.id.blood_location_hours);
             mDistance = itemView.findViewById(R.id.blood_location_distance);
             mRating = itemView.findViewById(R.id.blood_location_rating);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            int position = getAdapterPosition();
+            Result result = BloodPlacesRecyclerAdapter.this.mLocations.get(position);
+            mListener.onItemClick(result);
         }
     }
 

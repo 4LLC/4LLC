@@ -9,6 +9,9 @@
     <!-- Donate Blood -->
     <string name="donate_blood_str">Donate Blood</string>
 
+    <!-- settings -->
+    <string name="action_settings">Settings</string>
+
     <!--Donate Blood List Activities-->
     <string name="no_internet_connection_header_text">No Internet Connection</string>
     <string name="no_internet_connection_body_text">There does not seem to be an internet connection,

@@ -9,10 +9,13 @@ import android.location.LocationManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 
+import com.fourllc.donate.model.PlacesLocation;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+
+import java.text.DecimalFormat;
 
 /**
  * Created by aaronbrecher on 3/6/18.
@@ -53,5 +56,21 @@ public class LocationUtils {
 //                    }
 //                });
 //    }
+
+    /**
+     * Method to calculate the distance from users location to the current donation center
+     * @param userLocation Location object with lat/lon of the user
+     * @param donationLocation - The location object from the model with the lat/lon of donation center (this is NOT and android
+     *                         location and will be converted in this function!!)
+     * @return the distance between the two locations as a string formatted to one decimal point
+     */
+    public static String getDistance(Location userLocation, PlacesLocation donationLocation) {
+        Location destination = new Location("");
+        destination.setLatitude(donationLocation.getLat());
+        destination.setLongitude(donationLocation.getLng());
+        float distance = userLocation.distanceTo(destination)/1000;
+        DecimalFormat df = new DecimalFormat("#.#");
+        return df.format(distance) + "KM";
+    }
 
 }

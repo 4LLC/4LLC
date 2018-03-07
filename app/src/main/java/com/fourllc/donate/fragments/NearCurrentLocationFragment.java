@@ -27,6 +27,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.fourllc.donate.BloodLocationsViewModel;
@@ -56,8 +57,7 @@ public class NearCurrentLocationFragment extends Fragment implements BloodPlaces
     private RecyclerView mPlacesList;
     private LinearLayout mNoConnectionErrorView;
     private LinearLayout mNoLocationErrorView;
-
-    private FusedLocationProviderClient mFusedLocationProviderClient;
+    private Button mNoLocationTryAgain;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -88,10 +88,11 @@ public class NearCurrentLocationFragment extends Fragment implements BloodPlaces
         //get references to the error views
         mNoConnectionErrorView = (LinearLayout)view.findViewById(R.id.no_connection_error_view);
         mNoLocationErrorView = (LinearLayout)view.findViewById(R.id.location_error_view);
+        mNoLocationTryAgain = (Button)view.findViewById(R.id.location_try_again);
 
         //set up an observer to check if the locations data in the ViewModel changes
         //if it does update the adapter
-        mViewModel.getLocations().observe(this, new Observer<List<Result>>() {
+        mViewModel.getLocationsNearCurrent().observe(this, new Observer<List<Result>>() {
             @Override
             public void onChanged(@Nullable List<Result> locations) {
                 //if the dataset changed update the adapter with the new results
@@ -104,31 +105,48 @@ public class NearCurrentLocationFragment extends Fragment implements BloodPlaces
             ActivityCompat.requestPermissions(mActivity, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
                     LocationUtils.LOCATION_PERMISSION_REQUEST);
         }else{
-            //get the users location and set the ViewModel's location
-            Location location = LocationUtils.getDeviceLocation(mActivity);
-            //if the location is null show the noLocationErrorView
-            if(location == null){
-                mPlacesList.setVisibility(View.GONE);
-                mNoLocationErrorView.setVisibility(View.VISIBLE);
-            }
-            //if there is no network connection show the no network error message
-            else if (!NetworkingUtils.hasNetworkConnection(mActivity)){
-                mPlacesList.setVisibility(View.GONE);
-                mNoConnectionErrorView.setVisibility(View.VISIBLE);
-            }
-            //if all is good show the recyclerView and use the ViewModel to
-            //query the Places API for donation centers
-            else{
-                mViewModel.setCurrentLocation(location);
-                showListView();
-            }
+            setUpUi();
         }
 
+        mNoLocationTryAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!LocationUtils.hasPermissions(mActivity)){
+                    ActivityCompat.requestPermissions(mActivity, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
+                            LocationUtils.LOCATION_PERMISSION_REQUEST);
+                } else{
+                    setUpUi();
+                }
+            }
+        });
+
+    }
+
+    private void setUpUi(){
+        //get the users location and set the ViewModel's location
+        Location location = LocationUtils.getDeviceLocation(mActivity);
+        //if the location is null show the noLocationErrorView
+        if(location == null){
+            mPlacesList.setVisibility(View.GONE);
+            mNoLocationErrorView.setVisibility(View.VISIBLE);
+        }
+        //if there is no network connection show the no network error message
+        else if (!NetworkingUtils.hasNetworkConnection(mActivity)){
+            mPlacesList.setVisibility(View.GONE);
+            mNoConnectionErrorView.setVisibility(View.VISIBLE);
+        }
+        //if all is good show the recyclerView and use the ViewModel to
+        //query the Places API for donation centers
+        else{
+            mViewModel.setCurrentLocation(location);
+            showListView();
+        }
     }
 
     /**
      * Callback when user either denies or allows the location permission
      * will call a function to get the location or display a message to user
+     * TODO this is not being called FIX!!
      */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

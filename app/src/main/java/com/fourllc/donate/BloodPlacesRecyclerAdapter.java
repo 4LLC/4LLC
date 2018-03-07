@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.fourllc.donate.MapUtils.LocationUtils;
 import com.fourllc.donate.model.OpeningHours;
 import com.fourllc.donate.model.PlacesLocation;
 import com.fourllc.donate.model.Result;
@@ -60,26 +61,8 @@ public class BloodPlacesRecyclerAdapter extends RecyclerView.Adapter<BloodPlaces
         bindTextView(holder.mHours, getHoursInfo(currentPlace.getOpeningHours()));
         bindTextView(holder.mRating, String.valueOf(currentPlace.getRating()));
         //get the distance to the location will use the android Location class to get distance
-        String distance = getDistance(mCurrentLocation, currentPlace.getGeometry().getLocation());
+        String distance = LocationUtils.getDistance(mCurrentLocation, currentPlace.getGeometry().getLocation());
         bindTextView(holder.mDistance, distance);
-        //TODO add data here that will allow us to use a map intent... holder.itemView.setTag();
-
-    }
-
-    /**
-     * Method to calculate the distance from users location to the current donation center
-     * @param userLocation Location object with lat/lon of the user
-     * @param donationLocation - The location object from the model with the lat/lon of donation center (this is NOT and android
-     *                         location and will be converted in this function!!)
-     * @return the distance between the two locations as a string formatted to one decimal point
-     */
-    private String getDistance(Location userLocation, PlacesLocation donationLocation) {
-        Location destination = new Location("");
-        destination.setLatitude(donationLocation.getLat());
-        destination.setLongitude(donationLocation.getLng());
-        float distance = userLocation.distanceTo(destination)/1000;
-        DecimalFormat df = new DecimalFormat("#.#");
-        return df.format(distance) + "KM";
     }
 
     @Override
@@ -107,6 +90,11 @@ public class BloodPlacesRecyclerAdapter extends RecyclerView.Adapter<BloodPlaces
             itemView.setOnClickListener(this);
         }
 
+        /**
+         * onClick send the Result Object (which has all the location information) to
+         * the listener to launch a map intent
+         * @param view
+         */
         @Override
         public void onClick(View view) {
             int position = getAdapterPosition();

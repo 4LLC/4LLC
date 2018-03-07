@@ -27,9 +27,26 @@ import static android.content.ContentValues.TAG;
  */
 
 public class BloodLocationsViewModel extends ViewModel{
+
+    //Finals to be used to determine which dataset to update
+    private static final int LOCATION_TYPE_HOME = 1;
+    public static final int LOCATION_TYPE_CURRENT = 2;
+
     private Location mCurrentLocation;
+
+    public Location getHomeLocation() {
+        return mHomeLocation;
+    }
+
+    public void setHomeLocation(Location homeLocation) {
+        this.mHomeLocation = mHomeLocation;
+        this.getDonationLocations(homeLocation, LOCATION_TYPE_HOME);
+    }
+
+    private Location mHomeLocation;
     private PlacesService mService;
-    private MutableLiveData<List<Result>> mLocations;
+    private MutableLiveData<List<Result>> mNearCurrentLocation;
+    private MutableLiveData<List<Result>> mNearHomeLocations;
 
     public Location getCurrentLocation() {
         return mCurrentLocation;
@@ -37,7 +54,7 @@ public class BloodLocationsViewModel extends ViewModel{
 
     public void setCurrentLocation(Location location) {
         this.mCurrentLocation = location;
-        this.getDonationLocations();
+        this.getDonationLocations(location, LOCATION_TYPE_CURRENT);
     }
 
     public PlacesService getService() {
@@ -49,26 +66,34 @@ public class BloodLocationsViewModel extends ViewModel{
         this.mService = service;
     }
 
-    public MutableLiveData<List<Result>> getLocations(){
-        if (mLocations == null){
-            mLocations = new MutableLiveData<List<Result>>();
+    public MutableLiveData<List<Result>> getLocationsNearCurrent(){
+        if (mNearCurrentLocation == null){
+            mNearCurrentLocation = new MutableLiveData<List<Result>>();
         }
-        return mLocations;
+        return mNearCurrentLocation;
+    }
+
+    public MutableLiveData<List<Result>> getLocationsNearHome(){
+        if(mNearHomeLocations == null){
+            mNearHomeLocations = new MutableLiveData<List<Result>>();
+        }
+        return mNearHomeLocations;
     }
     /**
      * This method will use retrofit to query the google places API for all blood donation
      * centers near the users current location
      */
-    public void getDonationLocations(){
+    public void getDonationLocations(Location location, int locationType){
         //create a string representation of the location to use in the query
-        String location = mCurrentLocation.getLatitude() + "," + mCurrentLocation.getLongitude();
-        this.getService().getPlaces(location).enqueue(new Callback<PlacesAnswerResponse>() {
+        String locationString = location.getLatitude() + "," + location.getLongitude();
+        this.getService().getPlaces(locationString).enqueue(new Callback<PlacesAnswerResponse>() {
             @Override
             public void onResponse(Call<PlacesAnswerResponse> call, Response<PlacesAnswerResponse> response) {
                 if(response.isSuccessful()){
                     List<Result> locations = response.body().getResults();
-                    //updates the adapter with the list of locations(results) & the current location to be used to calculate distance
-                    mLocations.setValue(locations);
+                    //update the livedata set will update the correct set depending on the locationType param
+                    if(locationType == LOCATION_TYPE_CURRENT) mNearCurrentLocation.setValue(locations);
+                    else if (locationType == LOCATION_TYPE_HOME)mNearHomeLocations.setValue(locations);
                 }
                 //if the response failed for now we will log the code TODO fix this so if the response failed return
                 // an error code so the UI can be updated some goes for on fail

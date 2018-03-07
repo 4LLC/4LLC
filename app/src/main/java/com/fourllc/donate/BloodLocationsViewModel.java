@@ -33,16 +33,6 @@ public class BloodLocationsViewModel extends ViewModel{
     public static final int LOCATION_TYPE_CURRENT = 2;
 
     private Location mCurrentLocation;
-
-    public Location getHomeLocation() {
-        return mHomeLocation;
-    }
-
-    public void setHomeLocation(Location homeLocation) {
-        this.mHomeLocation = mHomeLocation;
-        this.getDonationLocations(homeLocation, LOCATION_TYPE_HOME);
-    }
-
     private Location mHomeLocation;
     private PlacesService mService;
     private MutableLiveData<List<Result>> mNearCurrentLocation;
@@ -55,6 +45,15 @@ public class BloodLocationsViewModel extends ViewModel{
     public void setCurrentLocation(Location location) {
         this.mCurrentLocation = location;
         this.getDonationLocations(location, LOCATION_TYPE_CURRENT);
+    }
+
+    public Location getHomeLocation() {
+        return mHomeLocation;
+    }
+
+    public void setHomeLocation(Location homeLocation) {
+        this.mHomeLocation = mHomeLocation;
+        this.getDonationLocations(homeLocation, LOCATION_TYPE_HOME);
     }
 
     public PlacesService getService() {

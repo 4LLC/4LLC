@@ -102,7 +102,7 @@ public class NearCurrentLocationFragment extends Fragment implements BloodPlaces
 
         //check that we have permission to access the location if we do not request the permission
         if (!LocationUtils.hasPermissions(mActivity)) {
-            ActivityCompat.requestPermissions(mActivity, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
+            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
                     LocationUtils.LOCATION_PERMISSION_REQUEST);
         }else{
             setUpUi();

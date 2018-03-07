@@ -27,6 +27,7 @@ public class BloodLocationsViewModel extends ViewModel{
     private Location mLocation;
     private PlacesService mService;
     private BloodPlacesRecyclerAdapter mAdapter;
+    private String mHomeAddress;
 
     public Location getLocation() {
         return mLocation;
@@ -42,6 +43,14 @@ public class BloodLocationsViewModel extends ViewModel{
 
     public void setService(PlacesService service) {
         this.mService = service;
+    }
+
+    public String getmHomeAddress() {
+        return mHomeAddress;
+    }
+
+    public void setmHomeAddress(String mHomeAddress) {
+        this.mHomeAddress = mHomeAddress;
     }
 
     public BloodPlacesRecyclerAdapter getAdapter() {

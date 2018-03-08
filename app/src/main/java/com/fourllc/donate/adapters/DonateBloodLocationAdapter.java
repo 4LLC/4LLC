@@ -5,8 +5,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.fourllc.donate.fragments.AnotherLocationFragment;
-import com.fourllc.donate.fragments.NearCurrentLocationFragment;
-import com.fourllc.donate.fragments.NearHomeLocationFragment;
+import com.fourllc.donate.fragments.CurrentLocationListFragment;
+import com.fourllc.donate.fragments.CurrentLocationMapFragment;
 
 /**
  * This class is used to define a pager adapter for
@@ -28,10 +28,10 @@ public class DonateBloodLocationAdapter extends FragmentStatePagerAdapter {
 
         switch (position) {
             case 0:
-                NearCurrentLocationFragment currentLocationFragment = new NearCurrentLocationFragment();
+                CurrentLocationListFragment currentLocationFragment = new CurrentLocationListFragment();
                 return currentLocationFragment;
             case 1:
-                NearHomeLocationFragment homeLocationFragment = new NearHomeLocationFragment();
+                CurrentLocationMapFragment homeLocationFragment = new CurrentLocationMapFragment();
                 return homeLocationFragment;
             case 2:
                 AnotherLocationFragment anotherLocationFragment = new AnotherLocationFragment();

@@ -3,16 +3,12 @@ package com.fourllc.donate.fragments;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.location.LocationManager;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -20,7 +16,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -31,13 +26,12 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.fourllc.donate.BloodLocationsViewModel;
-import com.fourllc.donate.BloodPlacesRecyclerAdapter;
+import com.fourllc.donate.Adapters.BloodPlacesRecyclerAdapter;
 import com.fourllc.donate.MapUtils.LocationUtils;
 import com.fourllc.donate.NetworkingUtils.NetworkingUtils;
 import com.fourllc.donate.R;
 import com.fourllc.donate.model.PlacesLocation;
 import com.fourllc.donate.model.Result;
-import com.fourllc.donate.remote.ApiUtils;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -52,7 +46,7 @@ import static android.content.ContentValues.TAG;
  * on the current location
  */
 
-public class NearCurrentLocationFragment extends Fragment implements BloodPlacesRecyclerAdapter.OnItemClickListener {
+public class CurrentLocationListFragment extends Fragment implements BloodPlacesRecyclerAdapter.OnItemClickListener {
 
     private FragmentActivity mActivity;
     private BloodLocationsViewModel mViewModel;
@@ -176,7 +170,7 @@ public class NearCurrentLocationFragment extends Fragment implements BloodPlaces
                     @Override
                     public void onComplete(@NonNull Task<Location> task) {
                         if(task.isSuccessful() && task.getResult() != null){
-                            NearCurrentLocationFragment.this.setUpUi();
+                            CurrentLocationListFragment.this.setUpUi();
                         }
                     }
                 });

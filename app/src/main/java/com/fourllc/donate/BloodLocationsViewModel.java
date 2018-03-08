@@ -1,12 +1,10 @@
 package com.fourllc.donate;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.location.Location;
 import android.util.Log;
 
-import com.fourllc.donate.BloodPlacesRecyclerAdapter;
 import com.fourllc.donate.model.PlacesAnswerResponse;
 import com.fourllc.donate.model.Result;
 import com.fourllc.donate.remote.ApiUtils;
@@ -33,11 +31,8 @@ public class BloodLocationsViewModel extends ViewModel{
     public static final int LOCATION_TYPE_CURRENT = 2;
 
     private Location mCurrentLocation;
-    private Location mHomeLocation;
     private PlacesService mService;
     private MutableLiveData<List<Result>> mNearCurrentLocation;
-    private MutableLiveData<List<Result>> mNearHomeLocations;
-
     public Location getCurrentLocation() {
         return mCurrentLocation;
     }
@@ -45,15 +40,6 @@ public class BloodLocationsViewModel extends ViewModel{
     public void setCurrentLocation(Location location) {
         this.mCurrentLocation = location;
         this.getDonationLocations(location, LOCATION_TYPE_CURRENT);
-    }
-
-    public Location getHomeLocation() {
-        return mHomeLocation;
-    }
-
-    public void setHomeLocation(Location homeLocation) {
-        this.mHomeLocation = mHomeLocation;
-        this.getDonationLocations(homeLocation, LOCATION_TYPE_HOME);
     }
 
     public PlacesService getService() {
@@ -72,12 +58,6 @@ public class BloodLocationsViewModel extends ViewModel{
         return mNearCurrentLocation;
     }
 
-    public MutableLiveData<List<Result>> getLocationsNearHome(){
-        if(mNearHomeLocations == null){
-            mNearHomeLocations = new MutableLiveData<List<Result>>();
-        }
-        return mNearHomeLocations;
-    }
     /**
      * This method will use retrofit to query the google places API for all blood donation
      * centers near the users current location
@@ -92,7 +72,6 @@ public class BloodLocationsViewModel extends ViewModel{
                     List<Result> locations = response.body().getResults();
                     //update the livedata set will update the correct set depending on the locationType param
                     if(locationType == LOCATION_TYPE_CURRENT) mNearCurrentLocation.setValue(locations);
-                    else if (locationType == LOCATION_TYPE_HOME)mNearHomeLocations.setValue(locations);
                 }
                 //if the response failed for now we will log the code TODO fix this so if the response failed return
                 // an error code so the UI can be updated some goes for on fail

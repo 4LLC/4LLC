@@ -1,23 +1,19 @@
-package com.fourllc.donate;
+package com.fourllc.donate.Adapters;
 
 import android.content.Context;
 import android.location.Location;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.fourllc.donate.MapUtils.LocationUtils;
+import com.fourllc.donate.R;
 import com.fourllc.donate.model.OpeningHours;
-import com.fourllc.donate.model.PlacesLocation;
 import com.fourllc.donate.model.Result;
 
-import java.text.DecimalFormat;
 import java.util.List;
-
-import static android.content.ContentValues.TAG;
 
 /**
  * Created by aaronbrecher on 3/4/18.

@@ -41,8 +41,8 @@ public class DonateBloodLocationActivity extends AppCompatActivity implements Ta
         locationViewPager = (ViewPager) findViewById(R.id.location_view_pager);
 
         //adding the tabs to the tablayout
-        locationTabLayout.addTab(locationTabLayout.newTab().setText("Near Me"));
-        locationTabLayout.addTab(locationTabLayout.newTab().setText("Near Home Location"));
+        locationTabLayout.addTab(locationTabLayout.newTab().setText("Locations List"));
+        locationTabLayout.addTab(locationTabLayout.newTab().setText("Locations Map"));
         locationTabLayout.addTab(locationTabLayout.newTab().setText("Search Location"));
         locationTabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 

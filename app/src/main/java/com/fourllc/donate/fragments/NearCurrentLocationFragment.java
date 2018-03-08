@@ -39,6 +39,9 @@ import com.fourllc.donate.model.PlacesLocation;
 import com.fourllc.donate.model.Result;
 import com.fourllc.donate.remote.ApiUtils;
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 import java.util.List;
 
@@ -55,6 +58,7 @@ public class NearCurrentLocationFragment extends Fragment implements BloodPlaces
     private BloodLocationsViewModel mViewModel;
     private BloodPlacesRecyclerAdapter mAdapter;
     private RecyclerView mPlacesList;
+    private LinearLayout mListLayout;
     private LinearLayout mNoConnectionErrorView;
     private LinearLayout mNoLocationErrorView;
     private Button mNoLocationTryAgain;
@@ -89,6 +93,7 @@ public class NearCurrentLocationFragment extends Fragment implements BloodPlaces
         mNoConnectionErrorView = (LinearLayout)view.findViewById(R.id.no_connection_error_view);
         mNoLocationErrorView = (LinearLayout)view.findViewById(R.id.location_error_view);
         mNoLocationTryAgain = (Button)view.findViewById(R.id.location_try_again);
+        mListLayout = (LinearLayout)view.findViewById(R.id.list_view_layout);
 
         //set up an observer to check if the locations data in the ViewModel changes
         //if it does update the adapter
@@ -105,7 +110,8 @@ public class NearCurrentLocationFragment extends Fragment implements BloodPlaces
             requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
                     LocationUtils.LOCATION_PERMISSION_REQUEST);
         }else{
-            setUpUi();
+            //setUpUi();
+            getDeviceLocation(mActivity);
         }
 
         mNoLocationTryAgain.setOnClickListener(new View.OnClickListener() {
@@ -115,7 +121,8 @@ public class NearCurrentLocationFragment extends Fragment implements BloodPlaces
                     ActivityCompat.requestPermissions(mActivity, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
                             LocationUtils.LOCATION_PERMISSION_REQUEST);
                 } else{
-                    setUpUi();
+                    //setUpUi();
+                    getDeviceLocation(mActivity);
                 }
             }
         });
@@ -127,12 +134,12 @@ public class NearCurrentLocationFragment extends Fragment implements BloodPlaces
         Location location = LocationUtils.getDeviceLocation(mActivity);
         //if the location is null show the noLocationErrorView
         if(location == null){
-            mPlacesList.setVisibility(View.GONE);
+            mListLayout.setVisibility(View.GONE);
             mNoLocationErrorView.setVisibility(View.VISIBLE);
         }
         //if there is no network connection show the no network error message
         else if (!NetworkingUtils.hasNetworkConnection(mActivity)){
-            mPlacesList.setVisibility(View.GONE);
+            mListLayout.setVisibility(View.GONE);
             mNoConnectionErrorView.setVisibility(View.VISIBLE);
         }
         //if all is good show the recyclerView and use the ViewModel to
@@ -146,7 +153,6 @@ public class NearCurrentLocationFragment extends Fragment implements BloodPlaces
     /**
      * Callback when user either denies or allows the location permission
      * will call a function to get the location or display a message to user
-     * TODO this is not being called FIX!!
      */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -154,13 +160,26 @@ public class NearCurrentLocationFragment extends Fragment implements BloodPlaces
             case LocationUtils.LOCATION_PERMISSION_REQUEST:
                 if(grantResults.length == 2 && grantResults[0] == PackageManager.PERMISSION_GRANTED
                         && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
-                    showListView();
-                    mViewModel.setCurrentLocation(LocationUtils.getDeviceLocation(mActivity));
+                    getDeviceLocation(mActivity);
                 }else {
                     mNoLocationErrorView.setVisibility(View.VISIBLE);
                 }
         }
 
+    }
+
+    @SuppressLint("MissingPermission")
+    private void getDeviceLocation(Context context){
+        FusedLocationProviderClient locationProviderClient = LocationServices.getFusedLocationProviderClient(context);
+        locationProviderClient.getLastLocation()
+                .addOnCompleteListener(new OnCompleteListener<Location>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Location> task) {
+                        if(task.isSuccessful() && task.getResult() != null){
+                            NearCurrentLocationFragment.this.setUpUi();
+                        }
+                    }
+                });
     }
 
     /**
@@ -169,7 +188,7 @@ public class NearCurrentLocationFragment extends Fragment implements BloodPlaces
     private void showListView(){
         mNoConnectionErrorView.setVisibility(View.GONE);
         mNoLocationErrorView.setVisibility(View.GONE);
-        mPlacesList.setVisibility(View.VISIBLE);
+        mListLayout.setVisibility(View.VISIBLE);
     }
 
     /**

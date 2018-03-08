@@ -26,4 +26,6 @@
     <string name="no_location_body_text">Unable to find your location, please allow access to your location,
     if access was granted make sure your GPS is set to on</string>
     <string name="location_list_try_agian">Try Again</string>
+    <string name="list_explanation_text_header">Blood Location Centers</string>
+    <string name="list_explanation_text">Here are the closest donation centers in your area. Tap on a location to view the location on a map</string>
 </resources>

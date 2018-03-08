@@ -23,7 +23,7 @@ import java.text.DecimalFormat;
 
 public class LocationUtils {
     public static final int LOCATION_PERMISSION_REQUEST = 1001;
-    private static Location mlastLocation;
+
     public static boolean hasPermissions(Context context) {
         return ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED;
@@ -43,19 +43,6 @@ public class LocationUtils {
         return location;
     }
 
-//    @SuppressLint("MissingPermission")
-//    public static void getDeviceLocation(Context context){
-//        FusedLocationProviderClient locationProviderClient = LocationServices.getFusedLocationProviderClient(context);
-//        locationProviderClient.getLastLocation()
-//                .addOnCompleteListener(new OnCompleteListener<Location>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<Location> task) {
-//                        if(task.isSuccessful() && task.getResult() != null){
-//                            mlastLocation = task.getResult();
-//                        }
-//                    }
-//                });
-//    }
 
     /**
      * Method to calculate the distance from users location to the current donation center
@@ -69,8 +56,19 @@ public class LocationUtils {
         destination.setLatitude(donationLocation.getLat());
         destination.setLongitude(donationLocation.getLng());
         float distance = userLocation.distanceTo(destination)/1000;
-        DecimalFormat df = new DecimalFormat("#.#");
-        return df.format(distance) + "KM";
+        boolean useMiles = true;
+        if(useMiles){
+            double miles = kmToMiles(distance);
+            DecimalFormat df = new DecimalFormat("#");
+            return df.format(miles) + "\nMILES";
+        }else{
+            DecimalFormat df = new DecimalFormat("#");
+            return df.format(distance) + "\nKM";
+        }
+    }
+
+    private static double kmToMiles(float kilometers){
+        return kilometers * .621;
     }
 
 }

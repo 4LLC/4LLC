@@ -33,6 +33,11 @@ public class BloodLocationsViewModel extends ViewModel{
     private Location mCurrentLocation;
     private PlacesService mService;
     private MutableLiveData<List<Result>> mNearCurrentLocation;
+    //TODO add a variable to save a location on the map to use to focus on that
+    //location when the user clicks on the corresponding list card will then use
+    //that data to focus on the marker when we load the mapview. We then need to
+    //empty that variable when the mapview goes out of focus
+
     public Location getCurrentLocation() {
         return mCurrentLocation;
     }

@@ -192,12 +192,13 @@ public class CurrentLocationListFragment extends Fragment implements BloodPlaces
      */
     @Override
     public void onItemClick(Result placeLocation) {
-        PlacesLocation location = placeLocation.getGeometry().getLocation();
-        String latLon = location.getLat() + "," + location.getLng();
-        String query = "geo:" + latLon + "?q=" + placeLocation.getVicinity();
-        Uri intentUri = Uri.parse(query);
-        Intent intent = new Intent(Intent.ACTION_VIEW, intentUri);
-        Log.i(TAG, "onItemClick: " + query);
-        startActivity(intent);
+        Fragment fragment = new CurrentLocationMapFragment();
+//        PlacesLocation location = placeLocation.getGeometry().getLocation();
+//        String latLon = location.getLat() + "," + location.getLng();
+//        String query = "geo:" + latLon + "?q=" + placeLocation.getVicinity();
+//        Uri intentUri = Uri.parse(query);
+//        Intent intent = new Intent(Intent.ACTION_VIEW, intentUri);
+//        Log.i(TAG, "onItemClick: " + query);
+//        startActivity(intent);
     }
 }

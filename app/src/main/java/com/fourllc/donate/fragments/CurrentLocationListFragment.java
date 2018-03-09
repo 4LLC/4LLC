@@ -108,6 +108,9 @@ public class CurrentLocationListFragment extends Fragment implements BloodPlaces
             getDeviceLocation(mActivity);
         }
 
+        /**
+         * Set up the try again button to request the location again from the user
+         */
         mNoLocationTryAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -115,7 +118,6 @@ public class CurrentLocationListFragment extends Fragment implements BloodPlaces
                     ActivityCompat.requestPermissions(mActivity, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
                             LocationUtils.LOCATION_PERMISSION_REQUEST);
                 } else{
-                    //setUpUi();
                     getDeviceLocation(mActivity);
                 }
             }
@@ -123,6 +125,10 @@ public class CurrentLocationListFragment extends Fragment implements BloodPlaces
 
     }
 
+    /**
+     * Function to set up the UI will either show error messages or will update
+     * the ViewModel current location which in turn will update the list
+     */
     private void setUpUi(){
         //get the users location and set the ViewModel's location
         Location location = LocationUtils.getDeviceLocation(mActivity);
@@ -162,6 +168,11 @@ public class CurrentLocationListFragment extends Fragment implements BloodPlaces
 
     }
 
+    /**
+     * This function will get the location using the new GooglePlayServices
+     * Location API. On recieving the location will set up the UI
+     * @param context
+     */
     @SuppressLint("MissingPermission")
     private void getDeviceLocation(Context context){
         FusedLocationProviderClient locationProviderClient = LocationServices.getFusedLocationProviderClient(context);
@@ -188,6 +199,8 @@ public class CurrentLocationListFragment extends Fragment implements BloodPlaces
     /**
      * on click function to launch google maps for the specific location
      * clicking the location will pull up a map zoomed into the Donation Center
+     * for now this is commented out because this function disables the title, snippet,
+     * and directions button that by default shows on click on marker
      * @param placeLocation The Result Object that has all the location Information
      */
     @Override

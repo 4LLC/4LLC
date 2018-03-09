@@ -16,6 +16,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -56,7 +57,7 @@ public class CurrentLocationListFragment extends Fragment implements BloodPlaces
     private LinearLayout mNoConnectionErrorView;
     private LinearLayout mNoLocationErrorView;
     private Button mNoLocationTryAgain;
-
+    private Location mLocation;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -130,10 +131,9 @@ public class CurrentLocationListFragment extends Fragment implements BloodPlaces
      * the ViewModel current location which in turn will update the list
      */
     private void setUpUi(){
-        //get the users location and set the ViewModel's location
-        Location location = LocationUtils.getDeviceLocation(mActivity);
+
         //if the location is null show the noLocationErrorView
-        if(location == null){
+        if(mLocation == null){
             mListLayout.setVisibility(View.GONE);
             mNoLocationErrorView.setVisibility(View.VISIBLE);
         }
@@ -145,7 +145,7 @@ public class CurrentLocationListFragment extends Fragment implements BloodPlaces
         //if all is good show the recyclerView and use the ViewModel to
         //query the Places API for donation centers
         else{
-            mViewModel.setCurrentLocation(location);
+            mViewModel.setCurrentLocation(mLocation);
             showListView();
         }
     }
@@ -180,7 +180,9 @@ public class CurrentLocationListFragment extends Fragment implements BloodPlaces
                 .addOnCompleteListener(new OnCompleteListener<Location>() {
                     @Override
                     public void onComplete(@NonNull Task<Location> task) {
+                        Log.i(TAG, "onComplete: " + task.isSuccessful() + task.getResult());
                         if(task.isSuccessful() && task.getResult() != null){
+                            mLocation = task.getResult();
                             CurrentLocationListFragment.this.setUpUi();
                         }
                     }
@@ -205,13 +207,12 @@ public class CurrentLocationListFragment extends Fragment implements BloodPlaces
      */
     @Override
     public void onItemClick(Result placeLocation) {
-        Fragment fragment = new CurrentLocationMapFragment();
-//        PlacesLocation location = placeLocation.getGeometry().getLocation();
-//        String latLon = location.getLat() + "," + location.getLng();
-//        String query = "geo:" + latLon + "?q=" + placeLocation.getVicinity();
-//        Uri intentUri = Uri.parse(query);
-//        Intent intent = new Intent(Intent.ACTION_VIEW, intentUri);
-//        Log.i(TAG, "onItemClick: " + query);
-//        startActivity(intent);
+        PlacesLocation location = placeLocation.getGeometry().getLocation();
+        String latLon = location.getLat() + "," + location.getLng();
+        String query = "geo:" + latLon + "?q=" + placeLocation.getVicinity();
+        Uri intentUri = Uri.parse(query);
+        Intent intent = new Intent(Intent.ACTION_VIEW, intentUri);
+        Log.i(TAG, "onItemClick: " + query);
+        startActivity(intent);
     }
 }

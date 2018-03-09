@@ -120,7 +120,8 @@ public class BloodPlacesRecyclerAdapter extends RecyclerView.Adapter<BloodPlaces
     private String getHoursInfo(OpeningHours openingHours){
         String openNow;
         Log.i(TAG, "getHoursInfo: " + openingHours);
-        if(openingHours != null){
+        //Make sure we actually have opening hours information the object may be null as well as the openNow Boolean
+        if(openingHours != null && openingHours.getOpenNow() != null){
             openNow = openingHours.getOpenNow() ? "Open Now" : "Closed";
         }else openNow = "Opening hours not available";
         return openNow;

@@ -17,6 +17,9 @@
     <string name="pref_home_address_key" translatable="false">homeadd</string>
     <string name="pref_home_address_default" translatable="false"></string>
 
+    <!-- Search Location -->
+    <string name="search_location">Search Location</string>
+
     <!--Donate Blood List Activities-->
     <string name="no_internet_connection_header_text">No Internet Connection</string>
     <string name="no_internet_connection_body_text">There does not seem to be an internet connection,

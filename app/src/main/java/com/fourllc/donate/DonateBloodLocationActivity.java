@@ -27,14 +27,12 @@ public class DonateBloodLocationActivity extends AppCompatActivity implements Ta
     private TabLayout locationTabLayout;
     private ViewPager locationViewPager;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donate_blood_location);
 
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
-
         setSupportActionBar(toolbar);
 
         locationTabLayout = (TabLayout) findViewById(R.id.location_tab_layout);
@@ -54,7 +52,6 @@ public class DonateBloodLocationActivity extends AppCompatActivity implements Ta
         locationViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(locationTabLayout));
 
         locationTabLayout.addOnTabSelectedListener(this);
-
     }
 
     @Override

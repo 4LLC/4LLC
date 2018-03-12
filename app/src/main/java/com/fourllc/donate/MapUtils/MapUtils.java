@@ -26,16 +26,20 @@ public class MapUtils {
      * @param locations the list of nearby locations
      */
     public static void setUpMapLocations(GoogleMap googleMap, List<Result> locations){
-        //setup a builder to create the bounds of all locations to place the camera
-        LatLngBounds.Builder builder = new LatLngBounds.Builder();
-        //iterate through all the locations and add a marker for each one
-        for(Result location : locations){
-            addMarker(location, googleMap, builder);
+        //make sure that there actually are locations before setting up map
+        //setting up with no locations will cause a runtime error
+        if(locations.size() > 1) {
+            //setup a builder to create the bounds of all locations to place the camera
+            LatLngBounds.Builder builder = new LatLngBounds.Builder();
+            //iterate through all the locations and add a marker for each one
+            for(Result location : locations){
+                addMarker(location, googleMap, builder);
+            }
+            //build the bounds object and set the camera to contain those bounds TODO check there are points(markers)
+            LatLngBounds bounds = builder.build();
+            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, 100);
+            googleMap.animateCamera(cameraUpdate);
         }
-        //build the bounds object and set the camera to contain those bounds
-        LatLngBounds bounds = builder.build();
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, 100);
-        googleMap.animateCamera(cameraUpdate);
     }
 
     /**

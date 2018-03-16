@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="standard_window_padding_horizontal">14dp</dimen>
-    <dimen name="small_window_padding_horizontal">8dp</dimen>
+    <dimen name="margin_horizontal_large">14dp</dimen>
+    <dimen name="margin_horizontal_small">8dp</dimen>
+    <dimen name="margin_vertical_large">14dp</dimen>
+    <dimen name="margin_vertical_small">8dp</dimen>
 </resources>

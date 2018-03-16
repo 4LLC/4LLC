@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/details_top_divider"
+        style="@style/horizontalDivider"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/details_avatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_account_circle_black_24dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/details_top_divider"
+        android:layout_marginLeft="@dimen/margin_horizontal_large"
+        android:layout_marginTop="@dimen/margin_vertical_large"/>
+
+    <TextView
+        android:id="@+id/details_campaign_owner_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:letterSpacing=".5"
+        android:text="@string/campaign_owner_label"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textSize="8sp"
+        app:layout_constraintLeft_toRightOf="@id/details_avatar"
+        app:layout_constraintTop_toTopOf="@id/details_avatar"
+        android:layout_marginLeft="@dimen/margin_horizontal_small"/>
+
+    <TextView
+        android:id="@+id/details_campaign_owner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/details_campaign_owner_label"
+        app:layout_constraintTop_toBottomOf="@id/details_campaign_owner_label"
+        android:text="@string/campaign_owner"
+        android:textSize="21sp"/>
+</android.support.constraint.ConstraintLayout>

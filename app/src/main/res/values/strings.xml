@@ -20,7 +20,7 @@
     <!-- Search Location -->
     <string name="search_location">Search Location</string>
 
-    <!--Donate Blood List Activities-->
+    <!--Donate Blood Locations Activities-->
     <string name="no_internet_connection_header_text">No Internet Connection</string>
     <string name="no_internet_connection_body_text">There does not seem to be an internet connection,
         check your device and make sure data or wifi is enabled</string>
@@ -31,4 +31,12 @@
     <string name="location_list_try_agian">Try Again</string>
     <string name="list_explanation_text_header">Blood Location Centers</string>
     <string name="list_explanation_text">Here are the closest donation centers in your area. Tap on a location to view the location on a map</string>
+
+    <!--Main Activity Strings-->
+    <string name="campaign_owner_label">CAMPAIGN OWNER</string>
+    <string name="parent_charity_label">PARENT CHARITY</string>
+
+    <!--dummy values for campaign will get real values from DB-->
+    <string name="campaign_owner">Terry Fields</string>
+
 </resources>

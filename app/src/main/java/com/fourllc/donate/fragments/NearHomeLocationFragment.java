@@ -20,6 +20,7 @@ import com.fourllc.donate.R;
  */
 
 public class NearHomeLocationFragment extends Fragment implements SharedPreferences.OnSharedPreferenceChangeListener {
+    // TODO: 3/15/2018  if this is only used in onCreate then it should be a local variable.
     private BloodLocationsViewModel mViewModel;
 
     @Override
@@ -41,6 +42,7 @@ public class NearHomeLocationFragment extends Fragment implements SharedPreferen
         loadHomeAddressFromPreferences(sharedPreferences);
     }
 
+    // TODO: 3/15/2018 what does this method do?
     private void loadHomeAddressFromPreferences(SharedPreferences sharedPreferences) {
         String homeAddress = sharedPreferences.getString(getString(R.string.pref_home_address_key), getString(R.string.pref_home_address_default));
         //mViewModel.setmHomeAddress(homeAddress);

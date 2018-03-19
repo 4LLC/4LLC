@@ -25,12 +25,13 @@ import static android.content.ContentValues.TAG;
  * ViewModel for the location lists fragment the ViewModel will contain all
  * the data as well as do all non UI related tasks
  */
-
+// TODO: 3/15/2018  view models are suppose to be pojos right?? Please refactor this class..
+    // it's doing way to much...
 public class BloodLocationsViewModel extends ViewModel{
 
     //Finals to be used to determine which dataset to update
     private static final int LOCATION_TYPE_HOME = 1;
-    public static final int LOCATION_TYPE_CURRENT = 2;
+    private static final int LOCATION_TYPE_CURRENT = 2;
 
     private Location mCurrentLocation;
     private Location mHomeLocation;
@@ -61,6 +62,7 @@ public class BloodLocationsViewModel extends ViewModel{
         return mService;
     }
 
+    // TODO: 3/19/2018  why are some UI elements using viewModel but others are not?
     public void setService(PlacesService service) {
         this.mService = service;
     }
@@ -78,6 +80,9 @@ public class BloodLocationsViewModel extends ViewModel{
         }
         return mNearHomeLocations;
     }
+
+    // TODO: 3/15/2018 put this in a utility or helper method. An accessor method should not contain "business logic"
+    // // TODO: 3/15/2018 If you find yourself explaining a method like this, first consider refactoring it to be more expressive.
     /**
      * This method will use retrofit to query the google places API for all blood donation
      * centers near the users current location

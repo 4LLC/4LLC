@@ -5,6 +5,7 @@ package com.fourllc.donate.remote;
  * a function to return an instance of the retrofit interface.
  */
 
+// TODO: 3/15/2018   externalize these constants
 public class ApiUtils {
     //base url for the places API - need to add type=json...
     public static final String BASE_URL = "https://maps.googleapis.com";

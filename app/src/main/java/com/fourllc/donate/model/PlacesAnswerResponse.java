@@ -1,5 +1,6 @@
 package com.fourllc.donate.model;
-
+// TODO: 3/19/2018 remove all "source header' comments. there are unnecessary noise in the source code.
+// TODO: 3/19/2018 consider using lombok to generate accessor methods at compile time.
 /**
  * Created by aaronbrecher on 3/3/18.
  */

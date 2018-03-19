@@ -17,9 +17,7 @@ import com.google.android.gms.tasks.Task;
 
 import java.text.DecimalFormat;
 
-/**
- * Created by aaronbrecher on 3/6/18.
- */
+
 
 public class LocationUtils {
     public static final int LOCATION_PERMISSION_REQUEST = 1001;
@@ -28,7 +26,7 @@ public class LocationUtils {
         return ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED;
     }
-
+    // TODO: 3/19/2018 instead or suppressing the compiler error, how about checking for permissions here...
     /**
      * This function will get the device location suppressLint as we already checked
      * permissions before calling this function
@@ -37,10 +35,11 @@ public class LocationUtils {
     public static Location getDeviceLocation(Context context) {
         LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
         //set the ViewModel location variable
-        Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        if (location == null)
-            location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-        return location;
+        if (locationManager != null) {
+            Location  location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            return location != null ? location : locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        }
+        return null;
     }
 
 
@@ -55,7 +54,12 @@ public class LocationUtils {
         Location destination = new Location("");
         destination.setLatitude(donationLocation.getLat());
         destination.setLongitude(donationLocation.getLng());
+        // TODO: 3/15/2018  why write a method to calculate kmToMiles and not one to calculate distance...
+
         float distance = userLocation.distanceTo(destination)/1000;
+        // TODO: 3/15/2018 useMiles is always true.
+        // TODO: 3/15/2018 the decimalFormat doesn't change based on the value of useMiles, therefore it should
+        // be outside of the decision block..
         boolean useMiles = true;
         if(useMiles){
             double miles = kmToMiles(distance);

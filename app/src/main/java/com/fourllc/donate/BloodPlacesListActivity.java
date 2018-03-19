@@ -1,3 +1,5 @@
+// TODO: 3/19/2018 remove this class if it's no longer needed.. 
+
 //package com.fourllc.donate;
 //
 //import android.Manifest;

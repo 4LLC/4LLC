@@ -8,34 +8,30 @@ import com.fourllc.donate.fragments.AnotherLocationFragment;
 import com.fourllc.donate.fragments.NearCurrentLocationFragment;
 import com.fourllc.donate.fragments.NearHomeLocationFragment;
 
-/**
- * This class is used to define a pager adapter for
- * the tabs swiping feature.
- */
+
 
 public class DonateBloodLocationAdapter extends FragmentStatePagerAdapter {
 
-    private int noOfTabs;
+    // TODO: 3/15/2018 use more expressive variable names
+    private int numberOfTabs;
 
-    public DonateBloodLocationAdapter(FragmentManager fm, int noOfTabs) {
-        super(fm);
-
-        this.noOfTabs = noOfTabs;
+    // TODO: 3/15/2018 use more expressive parameter names
+    public DonateBloodLocationAdapter(FragmentManager fragmentManager, int numberOfTabs) {
+        super(fragmentManager);
+        this.numberOfTabs = numberOfTabs;
     }
 
     @Override
     public Fragment getItem(int position) {
 
+        // TODO: 3/15/2018 more concise expression..
         switch (position) {
             case 0:
-                NearCurrentLocationFragment currentLocationFragment = new NearCurrentLocationFragment();
-                return currentLocationFragment;
+                return new NearCurrentLocationFragment();
             case 1:
-                NearHomeLocationFragment homeLocationFragment = new NearHomeLocationFragment();
-                return homeLocationFragment;
+                return new NearHomeLocationFragment();
             case 2:
-                AnotherLocationFragment anotherLocationFragment = new AnotherLocationFragment();
-                return anotherLocationFragment;
+                return new AnotherLocationFragment();
             default:
                 return null;
         }
@@ -43,6 +39,6 @@ public class DonateBloodLocationAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return noOfTabs;
+        return numberOfTabs;
     }
 }

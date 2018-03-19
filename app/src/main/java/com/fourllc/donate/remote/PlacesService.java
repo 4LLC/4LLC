@@ -18,6 +18,10 @@ import retrofit2.http.Query;
  * radius of the supplied location
  * @Param location - will be the supplied location to search nearby
  */
+
+// TODO: 3/15/2018 externalize this search string...
+
+
 public interface PlacesService {
     @GET("/maps/api/place/nearbysearch/json?&radius=40000&keyword=blood+donation+center&key=" + ApiUtils.API_KEY)
     Call<PlacesAnswerResponse> getPlaces(@Query("location") String location);

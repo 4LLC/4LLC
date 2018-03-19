@@ -3,7 +3,6 @@ package com.fourllc.donate;
 import android.content.Context;
 import android.location.Location;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,17 +10,9 @@ import android.widget.TextView;
 
 import com.fourllc.donate.MapUtils.LocationUtils;
 import com.fourllc.donate.model.OpeningHours;
-import com.fourllc.donate.model.PlacesLocation;
 import com.fourllc.donate.model.Result;
 
-import java.text.DecimalFormat;
 import java.util.List;
-
-import static android.content.ContentValues.TAG;
-
-/**
- * Created by aaronbrecher on 3/4/18.
- */
 
 public class BloodPlacesRecyclerAdapter extends RecyclerView.Adapter<BloodPlacesRecyclerAdapter.ViewHolder>{
     private List<Result> mLocations;
@@ -48,7 +39,7 @@ public class BloodPlacesRecyclerAdapter extends RecyclerView.Adapter<BloodPlaces
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.blood_location_list_item, parent, false);
-
+        // TODO: 3/15/2018 redundant local variable. It's not needed if the only thing you're doing with it is returning it....
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
@@ -57,7 +48,7 @@ public class BloodPlacesRecyclerAdapter extends RecyclerView.Adapter<BloodPlaces
     public void onBindViewHolder(BloodPlacesRecyclerAdapter.ViewHolder holder, int position) {
         Result currentPlace = mLocations.get(position);
         bindTextView(holder.mName, currentPlace.getName());
-        bindTextView(holder.mAdress, currentPlace.getVicinity());
+        bindTextView(holder.mAddress, currentPlace.getVicinity());
         bindTextView(holder.mHours, getHoursInfo(currentPlace.getOpeningHours()));
         bindTextView(holder.mRating, String.valueOf(currentPlace.getRating()));
         //get the distance to the location will use the android Location class to get distance
@@ -65,8 +56,12 @@ public class BloodPlacesRecyclerAdapter extends RecyclerView.Adapter<BloodPlaces
         bindTextView(holder.mDistance, distance);
     }
 
+
+
     @Override
     public int getItemCount() {
+        // TODO: 3/15/2018 consider using the elvis operator.
+       //  return mLocations == null ? 0 : mLocations.size();
         if (mLocations == null) {
             return 0;
         }
@@ -76,14 +71,14 @@ public class BloodPlacesRecyclerAdapter extends RecyclerView.Adapter<BloodPlaces
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView mDistance;
         private TextView mName;
-        private TextView mAdress;
+        private TextView mAddress;
         private TextView mHours;
         private TextView mRating;
 
         public ViewHolder(View itemView) {
             super(itemView);
             mName = itemView.findViewById(R.id.blood_location_name);
-            mAdress = itemView.findViewById(R.id.blood_location_address);
+            mAddress = itemView.findViewById(R.id.blood_location_address);
             mHours = itemView.findViewById(R.id.blood_location_hours);
             mDistance = itemView.findViewById(R.id.blood_location_distance);
             mRating = itemView.findViewById(R.id.blood_location_rating);
@@ -108,6 +103,7 @@ public class BloodPlacesRecyclerAdapter extends RecyclerView.Adapter<BloodPlaces
      * @param textView the text view to be bound
      * @param string the string to set the text value
      */
+    // TODO: 3/15/2018 this method is not useful. In fact, I think it obfuscates a very simple operation.. Consider revising it.
     private void bindTextView(TextView textView, String string){
         textView.setText(string);
     }
@@ -124,6 +120,9 @@ public class BloodPlacesRecyclerAdapter extends RecyclerView.Adapter<BloodPlaces
             openNow = openingHours.getOpenNow() ? "Open Now" : "Closed";
         }else openNow = "Opening hours not available";
         return openNow;
+        // TODO: 3/19/2018 consider revising this method
+        // todo Ex. return openingHours != null ? openingHours.getOpenNow() ? "Open Now" : "Closed" : "Opening hours not available";
+
     }
 
     /**

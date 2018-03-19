@@ -76,6 +76,7 @@ public class NearCurrentLocationFragment extends Fragment implements BloodPlaces
         return inflater.inflate(R.layout.activity_blood_places_list, container, false);
     }
 
+    // TODO: 3/15/2018 use databinding instead on findbyView
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -105,6 +106,7 @@ public class NearCurrentLocationFragment extends Fragment implements BloodPlaces
             }
         });
 
+        // move this to the geDevice
         //check that we have permission to access the location if we do not request the permission
         if (!LocationUtils.hasPermissions(mActivity)) {
             requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},

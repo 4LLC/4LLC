@@ -37,6 +37,10 @@
     <string name="parent_charity_label">PARENT CHARITY</string>
 
     <!--dummy values for campaign will get real values from DB-->
+    <string name="header_heading">Luekemia &amp; Lymphoma Man Of The Year Campaign</string>
+    <string name="header_body">Join us as we lead the battle to defeat cancer. Help the Luekemia &amp; Lymphoma Society.</string>
+    <string name="header_run_by">Run by LLS</string>
+    <string name="header_charity">Charity Registration No. 277424</string>
     <string name="campaign_owner">Terry Fields</string>
 
 </resources>

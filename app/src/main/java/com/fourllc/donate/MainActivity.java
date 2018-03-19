@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_main);
 
         tabLayout = (TabLayout) findViewById(R.id.main_activity_tab_layout);
         viewPager = (ViewPager) findViewById(R.id.main_activity_view_pager);

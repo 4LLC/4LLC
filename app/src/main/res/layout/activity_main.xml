@@ -4,9 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.constraint.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         tools:context="com.fourllc.donate.MainActivity">
 
         <LinearLayout
@@ -69,7 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/main_activity_header_container">
+            android:layout_below="@id/main_activity_header_container">
 
             <!-- tab layout to display tabs -->
             <android.support.design.widget.TabLayout
@@ -95,9 +95,8 @@
             android:layout_marginEnd="16dp"
             android:elevation="6dp"
             android:src="@drawable/ic_share_black_24dp"
-            app:layout_constraintBottom_toBottomOf="@+id/main_activity_header_container"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_activity_header_container" />
+            android:layout_alignBottom="@id/main_activity_header_container"
+            android:layout_alignParentRight="true"/>
 
-    </android.support.constraint.ConstraintLayout>
+    </RelativeLayout>
 </ScrollView><!--header layout-->

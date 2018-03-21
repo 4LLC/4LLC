@@ -1,121 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/htab_maincontent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     android:fitsSystemWindows="true"
-    android:theme="@style/LocationTheme">
+    android:theme="@style/AppTheme">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
         android:fitsSystemWindows="true"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            style="@style/ToolBarWithNavigationBack"
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapse_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="?attr/actionBarSize"
-            android:paddingTop="24dp"
-            app:layout_scrollFlags="scroll|enterAlways" />
+            android:layout_height="280dp"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:titleEnabled="false">
 
-        <LinearLayout
-            android:id="@+id/main_activity_header_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
-            android:gravity="bottom|start"
-            android:orientation="vertical"
-            android:padding="14dp"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed|enterAlwaysCollapsed">
+            <LinearLayout
+                android:id="@+id/main_activity_header_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:gravity="left|bottom"
+                android:orientation="vertical"
+                android:padding="@dimen/margin_horizontal_large"
+                android:paddingTop="@dimen/margin_vertical_large"
+                app:layout_collapseMode="parallax">
 
-            <TextView
-                android:id="@+id/main_activity_header_heading"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/main_activity_header_heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:lineSpacingExtra="8sp"
+                    android:paddingTop="26dp"
+                    android:text="@string/header_heading"
+                    android:textColor="#ffffff"
+                    android:textSize="26sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="sans-serif"
+                    android:lineSpacingExtra="4sp"
+                    android:maxWidth="320dp"
+                    android:text="@string/header_body"
+                    android:textColor="#f1f1f1"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="-0.04"
+                    android:text="@string/header_run_by"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:letterSpacing="-0.04"
+                    android:text="@string/header_charity"
+                    android:textColor="#ffffff"
+                    android:textSize="10sp"
+                    android:textStyle="normal" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0.1"
+                android:background="@drawable/header_main_image"
+                android:fitsSystemWindows="true"
+                app:layout_collapseMode="parallax"/>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_gravity="top"
+                android:layout_marginBottom="48dp"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/main_activity_tab_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="26dp"
-                android:fontFamily="sans-serif-light"
-                android:lineSpacingExtra="8sp"
-                android:text="@string/header_heading"
-                android:textColor="#ffffff"
-                android:textSize="26sp"
-                android:textStyle="normal" />
+                android:layout_gravity="bottom"
+                android:background="@android:color/white"
+                app:tabIndicatorColor="@color/colorAccent"
+                app:tabSelectedTextColor="@color/colorAccent"
+                app:tabTextColor="@android:color/black" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:fontFamily="sans-serif"
-                android:lineSpacingExtra="4sp"
-                android:maxWidth="320dp"
-                android:text="@string/header_body"
-                android:textColor="#f1f1f1"
-                android:textSize="14sp"
-                android:textStyle="normal" />
+        </android.support.design.widget.CollapsingToolbarLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="26dp"
-                android:fontFamily="sans-serif-medium"
-                android:letterSpacing="-0.04"
-                android:text="@string/header_run_by"
-                android:textColor="#ffffff"
-                android:textSize="14sp"
-                android:textStyle="normal" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
-                android:letterSpacing="-0.04"
-                android:text="@string/header_charity"
-                android:textColor="#ffffff"
-                android:textSize="10sp"
-                android:textStyle="normal" />
-        </LinearLayout>
-
-        <android.support.design.widget.TabLayout
-            android:id="@+id/main_activity_tab_layout"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:layout_gravity="bottom"
-            android:background="@android:color/white"
-            android:paddingTop="15dp"
-            app:layout_scrollFlags="enterAlwaysCollapsed"
-            app:tabGravity="center"
-            app:tabIndicatorColor="@color/colorAccent"
-            app:tabTextAppearance="@style/mainActivityTabStyle" />
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/main_activity_view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
-
-    <!--<android.support.v4.widget.NestedScrollView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--app:layout_behavior="@string/appbar_scrolling_view_behavior" >-->
-
-        <!--<android.support.v4.view.ViewPager-->
-            <!--android:id="@+id/main_activity_view_pager"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent" />-->
-    <!--</android.support.v4.widget.NestedScrollView>-->
-
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <android.support.design.widget.FloatingActionButton
-        android:layout_width="46dp"
-        android:layout_height="46dp"
-        android:layout_marginEnd="16dp"
+        style="@style/Widget.Design.FloatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:elevation="6dp"
         android:src="@drawable/ic_share_black_24dp"
-        app:layout_anchor="@id/main_activity_header_container"
+        app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end" />
 
 </android.support.design.widget.CoordinatorLayout>

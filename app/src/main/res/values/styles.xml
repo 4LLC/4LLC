@@ -59,4 +59,16 @@
         <item name="android:textAllCaps">true</item>
         <item name="android:textSize">9dp</item>
     </style>
+
+    <style name="mainButton">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    
+    <style name="progressMoney" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/custom_progress_bar_horizontal</item>
+    </style>
 </resources>

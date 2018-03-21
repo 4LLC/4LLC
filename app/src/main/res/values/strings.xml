@@ -35,6 +35,13 @@
     <!--Main Activity Strings-->
     <string name="campaign_owner_label">CAMPAIGN OWNER</string>
     <string name="parent_charity_label">PARENT CHARITY</string>
+    <string name="campaign_story_title">Campaign Story</string>
+    <string name="donate_money_title">Donate Money</string>
+    <string name="donate_money_body">Help LLS meet its fundraising goal by donating money to be used to help cure cancer.
+        Every dollar you donate brings us closer to cureing cancer and saving millions of lives.
+        All donations are securely handled by JustGiving.com
+    </string>
+    <string name="donate_button">Donate</string>
 
     <!--dummy values for campaign will get real values from DB-->
     <string name="header_heading">Luekemia &amp; Lymphoma Man Of The Year Campaign</string>
@@ -42,7 +49,6 @@
     <string name="header_run_by">Run by LLS</string>
     <string name="header_charity">Charity Registration No. 277424</string>
     <string name="campaign_owner">Terry Fields</string>
-    <string name="campaign_story_title">Campaign Story</string>
     <string name="campaign_story">Every International Women\'s Day, (March 8th) for a few years now I have gone on Twitter to search for people asking, "When's International Men's Day?" to let them know that that is on November 19th. Weirdly most of them only seem to care about this on International Women\'s Day and when November 19th comes along they do nothing. I think some of them think that there wouldn\'t be an International Men\'s Day. But there is one. It\'s on November 19th. I do this so that everyone else can get on with celebrating International Women\'s Day and using it to raise awareness of the issues that affect women. And trying to achieve equality. Just like the men who ask when International Men's Day is could do on International Men's Day for men, but generally don't. I am not denigrating the people who use IMD to raise awareness. I can't think of anyone who does more to inform people that this day exists. On November 19th. But if you think about it equality works both ways. So if you think men don't  get equality in some areas, then striving for equality will help them too.
     </string>
 

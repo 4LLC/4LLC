@@ -13,7 +13,8 @@
         android:gravity="center_vertical|fill_horizontal">
         <scale android:scaleWidth="100%">
             <shape android:shape="rectangle"
-                android:tint="?attr/colorControlHighlight">
+                android:tint="?attr/colorControlHighlight"
+                android:tintMode="src_over">
                 <corners android:radius="8dp"/>
                 <size android:height="8dp" />
                 <solid android:color="#90caf9" />
@@ -24,7 +25,8 @@
         android:gravity="center_vertical|fill_horizontal">
         <scale android:scaleWidth="100%">
             <shape android:shape="rectangle"
-                android:tint="?attr/colorControlActivated">
+                android:tint="?attr/colorControlActivated"
+                android:tintMode="src_over">
                 <corners android:radius="8dp"/>
                 <size android:height="8dp" />
                 <solid android:color="#ffc425" />

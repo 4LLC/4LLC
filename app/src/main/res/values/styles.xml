@@ -70,5 +70,13 @@
     
     <style name="progressMoney" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
         <item name="android:progressDrawable">@drawable/custom_progress_bar_horizontal</item>
+        <item name="android:colorControlNormal">#dedede</item>
+        <item name="android:colorControlActivated">@color/colorAccent</item>
+    </style>
+
+    <style name="progressBlood" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:colorControlNormal">#dedede</item>
+        <item name="android:progressDrawable">@drawable/custom_progress_bar_horizontal</item>
+        <item name="android:colorControlActivated">@color/colorPrimary</item>
     </style>
 </resources>

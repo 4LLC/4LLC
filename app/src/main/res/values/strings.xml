@@ -42,6 +42,9 @@
         All donations are securely handled by JustGiving.com
     </string>
     <string name="donate_button">Donate</string>
+    <string name="donate_blood_title">Donate Blood</string>
+    <string name="donate_blood_body">Help LLS meet its goal in raising the blood bank by 10 Gallons. Every Oz of blood donated significantly helps us keep those with Luekemia &amp; Lymphoma fighting to live another day. Use the app to find the nearest Blood Donation Center near you.
+    </string>
 
     <!--dummy values for campaign will get real values from DB-->
     <string name="header_heading">Luekemia &amp; Lymphoma Man Of The Year Campaign</string>

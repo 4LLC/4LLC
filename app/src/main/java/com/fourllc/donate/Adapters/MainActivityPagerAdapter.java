@@ -1,5 +1,6 @@
 package com.fourllc.donate.Adapters;
 
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -14,7 +15,7 @@ import com.fourllc.donate.fragments.mainActivityFragments.MainActivityDonateMone
 
 public class MainActivityPagerAdapter extends FragmentStatePagerAdapter {
     private int numTabs;
-
+    private String[] mTitles = new String[]{"Details", "Donate Money", "Donate Blood"};
     public MainActivityPagerAdapter(FragmentManager fm, int numTabs) {
         super(fm);
         this.numTabs = numTabs;
@@ -39,4 +40,5 @@ public class MainActivityPagerAdapter extends FragmentStatePagerAdapter {
     public int getCount() {
         return numTabs;
     }
+
 }

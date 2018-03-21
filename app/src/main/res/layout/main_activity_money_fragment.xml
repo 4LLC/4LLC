@@ -28,6 +28,7 @@
             android:layout_width="340dp"
             android:layout_height="8dp"
             style="@style/progressMoney"
+            android:indeterminate="false"
             android:layout_marginTop="30dp"
             android:layout_gravity="center"
             android:progress="60"/>

@@ -1,9 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:padding="@dimen/margin_horizontal_large">
+
+    <TextView
+        android:id="@+id/story_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/donate_blood_title"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Display1" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Blood Fragment"/>
-</android.support.constraint.ConstraintLayout>
+        android:lineSpacingMultiplier="1.3"
+        android:text="@string/donate_blood_body" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+
+        <ImageView
+            android:id="@+id/blood_progress_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/blood_transfusion_progress_image" />
+
+        <ProgressBar
+            android:id="@+id/donate_money_progress"
+            style="@style/progressBlood"
+            android:layout_width="340dp"
+            android:layout_height="8dp"
+            android:layout_below="@id/blood_progress_image"
+            android:layout_gravity="center"
+            android:layout_marginTop="-4dp"
+            android:progress="60"
+            android:theme="@style/progressBlood" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/donate_money_button"
+        style="@style/mainButton"
+        android:background="@color/colorPrimary"
+        android:text="@string/donate_button" />
+</LinearLayout>

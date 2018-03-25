@@ -51,5 +51,7 @@
     <string name="campaign_owner">Terry Fields</string>
     <string name="campaign_story">Every International Women\'s Day, (March 8th) for a few years now I have gone on Twitter to search for people asking, "When's International Men's Day?" to let them know that that is on November 19th. Weirdly most of them only seem to care about this on International Women\'s Day and when November 19th comes along they do nothing. I think some of them think that there wouldn\'t be an International Men\'s Day. But there is one. It\'s on November 19th. I do this so that everyone else can get on with celebrating International Women\'s Day and using it to raise awareness of the issues that affect women. And trying to achieve equality. Just like the men who ask when International Men's Day is could do on International Men's Day for men, but generally don't. I am not denigrating the people who use IMD to raise awareness. I can't think of anyone who does more to inform people that this day exists. On November 19th. But if you think about it equality works both ways. So if you think men don't  get equality in some areas, then striving for equality will help them too.
     </string>
+    <string name="donated_money_progress_text">$25,000 Raised of $75,000 Goal</string>
+    <string name="donated_blood_progress_text">10.5 Liters donated of 25 Liter Goal</string>
 
 </resources>

@@ -47,9 +47,7 @@ public class BloodPlacesRecyclerAdapter extends RecyclerView.Adapter<BloodPlaces
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.blood_location_list_item, parent, false);
-
-        ViewHolder viewHolder = new ViewHolder(view);
-        return viewHolder;
+        return new ViewHolder(view);
     }
 
     @Override
@@ -66,10 +64,7 @@ public class BloodPlacesRecyclerAdapter extends RecyclerView.Adapter<BloodPlaces
 
     @Override
     public int getItemCount() {
-        if (mLocations == null) {
-            return 0;
-        }
-        return mLocations.size();
+        return mLocations == null ? 0 : mLocations.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -118,13 +113,7 @@ public class BloodPlacesRecyclerAdapter extends RecyclerView.Adapter<BloodPlaces
      * @return string to display if there is info will be "open" or "closed" otherwise will be "hours not available"
      */
     private String getHoursInfo(OpeningHours openingHours){
-        String openNow;
-        Log.i(TAG, "getHoursInfo: " + openingHours);
-        //Make sure we actually have opening hours information the object may be null as well as the openNow Boolean
-        if(openingHours != null && openingHours.getOpenNow() != null){
-            openNow = openingHours.getOpenNow() ? "Open Now" : "Closed";
-        }else openNow = "Opening hours not available";
-        return openNow;
+        return openingHours != null && openingHours.getOpenNow() != null ? openingHours.getOpenNow() ? "Open Now" : "Closed" : "Opening hours not available";
     }
 
     /**

@@ -8,6 +8,7 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.databinding.DataBindingUtil;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
@@ -31,6 +32,7 @@ import com.fourllc.donate.Adapters.BloodPlacesRecyclerAdapter;
 import com.fourllc.donate.MapUtils.LocationUtils;
 import com.fourllc.donate.NetworkingUtils.NetworkingUtils;
 import com.fourllc.donate.R;
+import com.fourllc.donate.databinding.ActivityBloodPlacesListBinding;
 import com.fourllc.donate.model.PlacesLocation;
 import com.fourllc.donate.model.Result;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -52,12 +54,9 @@ public class CurrentLocationListFragment extends Fragment implements BloodPlaces
     private FragmentActivity mActivity;
     private BloodLocationsViewModel mViewModel;
     private BloodPlacesRecyclerAdapter mAdapter;
-    private RecyclerView mPlacesList;
-    private LinearLayout mListLayout;
-    private LinearLayout mNoConnectionErrorView;
-    private LinearLayout mNoLocationErrorView;
-    private Button mNoLocationTryAgain;
+    private ActivityBloodPlacesListBinding binding;
     private Location mLocation;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,27 +67,22 @@ public class CurrentLocationListFragment extends Fragment implements BloodPlaces
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_blood_places_list, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.activity_blood_places_list, container, false);
+        View view = binding.getRoot();
+        return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        //get a reference to the recyclerView  & set it up
-        mPlacesList = view.findViewById(R.id.donation_locations_rv);
-        mPlacesList.setLayoutManager(new LinearLayoutManager(mActivity));
-        mPlacesList.setHasFixedSize(true);
+        //set up recyclerView using dataBinding object
+        binding.donationLocationsRv.setLayoutManager(new LinearLayoutManager(mActivity));
+        binding.donationLocationsRv.setHasFixedSize(true);
 
         //initialize the adapter to an empty adapter and set it up for the recyclerView
         mAdapter = new BloodPlacesRecyclerAdapter(null, null, this);
-        mPlacesList.setAdapter(mAdapter);
-
-        //get references to the error views
-        mNoConnectionErrorView = (LinearLayout)view.findViewById(R.id.no_connection_error_view);
-        mNoLocationErrorView = (LinearLayout)view.findViewById(R.id.location_error_view);
-        mNoLocationTryAgain = (Button)view.findViewById(R.id.location_try_again);
-        mListLayout = (LinearLayout)view.findViewById(R.id.list_view_layout);
+        binding.donationLocationsRv.setAdapter(mAdapter);
 
         //set up an observer to check if the locations data in the ViewModel changes
         //if it does update the adapter
@@ -112,7 +106,7 @@ public class CurrentLocationListFragment extends Fragment implements BloodPlaces
         /**
          * Set up the try again button to request the location again from the user
          */
-        mNoLocationTryAgain.setOnClickListener(new View.OnClickListener() {
+        binding.locationTryAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(!LocationUtils.hasPermissions(mActivity)){
@@ -134,13 +128,13 @@ public class CurrentLocationListFragment extends Fragment implements BloodPlaces
 
         //if the location is null show the noLocationErrorView
         if(mLocation == null){
-            mListLayout.setVisibility(View.GONE);
-            mNoLocationErrorView.setVisibility(View.VISIBLE);
+            binding.listViewLayout.setVisibility(View.GONE);
+            binding.locationErrorView.setVisibility(View.VISIBLE);
         }
         //if there is no network connection show the no network error message
         else if (!NetworkingUtils.hasNetworkConnection(mActivity)){
-            mListLayout.setVisibility(View.GONE);
-            mNoConnectionErrorView.setVisibility(View.VISIBLE);
+            binding.listViewLayout.setVisibility(View.GONE);
+            binding.noConnectionErrorView.setVisibility(View.VISIBLE);
         }
         //if all is good show the recyclerView and use the ViewModel to
         //query the Places API for donation centers
@@ -162,7 +156,7 @@ public class CurrentLocationListFragment extends Fragment implements BloodPlaces
                         && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
                     getDeviceLocation(mActivity);
                 }else {
-                    mNoLocationErrorView.setVisibility(View.VISIBLE);
+                    binding.locationErrorView.setVisibility(View.VISIBLE);
                 }
         }
 
@@ -193,9 +187,9 @@ public class CurrentLocationListFragment extends Fragment implements BloodPlaces
      * Function that hides both error views and reveals the recycler view
      */
     private void showListView(){
-        mNoConnectionErrorView.setVisibility(View.GONE);
-        mNoLocationErrorView.setVisibility(View.GONE);
-        mListLayout.setVisibility(View.VISIBLE);
+        binding.noConnectionErrorView.setVisibility(View.GONE);
+        binding.locationErrorView.setVisibility(View.GONE);
+        binding.listViewLayout.setVisibility(View.VISIBLE);
     }
 
     /**

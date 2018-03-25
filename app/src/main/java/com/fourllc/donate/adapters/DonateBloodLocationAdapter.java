@@ -15,12 +15,12 @@ import com.fourllc.donate.fragments.CurrentLocationMapFragment;
 
 public class DonateBloodLocationAdapter extends FragmentStatePagerAdapter {
 
-    private int noOfTabs;
+    private int numberOfTabs;
 
-    public DonateBloodLocationAdapter(FragmentManager fm, int noOfTabs) {
+    public DonateBloodLocationAdapter(FragmentManager fm, int numberOfTabs) {
         super(fm);
 
-        this.noOfTabs = noOfTabs;
+        this.numberOfTabs = numberOfTabs;
     }
 
     @Override
@@ -28,14 +28,11 @@ public class DonateBloodLocationAdapter extends FragmentStatePagerAdapter {
 
         switch (position) {
             case 0:
-                CurrentLocationListFragment currentLocationFragment = new CurrentLocationListFragment();
-                return currentLocationFragment;
+                return new CurrentLocationListFragment();
             case 1:
-                CurrentLocationMapFragment homeLocationFragment = new CurrentLocationMapFragment();
-                return homeLocationFragment;
+                return new CurrentLocationMapFragment();
             case 2:
-                AnotherLocationFragment anotherLocationFragment = new AnotherLocationFragment();
-                return anotherLocationFragment;
+                return new AnotherLocationFragment();
             default:
                 return null;
         }
@@ -43,6 +40,6 @@ public class DonateBloodLocationAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return noOfTabs;
+        return numberOfTabs;
     }
 }

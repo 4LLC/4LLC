@@ -1,139 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
-        android:id="@+id/no_connection_error_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/no_connection_error_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/no_internet_connection" />
-
-        <TextView
-            android:id="@+id/no_connection_error_text_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="@string/no_internet_connection_header_text"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/no_connection_error_text_body"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxWidth="270dp"
-            android:text="@string/no_internet_connection_body_text"
-            android:textAlignment="center" />
-
-        <Button
-            android:id="@+id/no_connection_try_again"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@color/colorAccent"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:text="@string/location_list_try_agian"
-            android:textColor="@android:color/white" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/location_error_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/location_error_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/no_location_access" />
-
-        <TextView
-            android:id="@+id/location_error_text_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="@string/no_location_header_text"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/location_error_text_body"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxWidth="270dp"
-            android:text="@string/no_location_body_text"
-            android:textAlignment="center" />
-
-        <Button
-            android:id="@+id/location_try_again"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@color/colorAccent"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:text="@string/location_list_try_agian"
-            android:textColor="@android:color/white" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/list_view_layout"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingTop="10dp">
+        android:layout_height="match_parent">
 
-        <TextView
+        <LinearLayout
+            android:id="@+id/no_connection_error_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/list_explanation_text_header"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="5dp"/>
+            android:layout_marginBottom="40dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
+            <ImageView
+                android:id="@+id/no_connection_error_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/no_internet_connection" />
+
+            <TextView
+                android:id="@+id/no_connection_error_text_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/no_internet_connection_header_text"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/no_connection_error_text_body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="270dp"
+                android:text="@string/no_internet_connection_body_text"
+                android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/no_connection_try_again"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorAccent"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="@string/location_list_try_agian"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/location_error_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:maxWidth="350dp"
-            android:text="@string/list_explanation_text"
-            android:textAlignment="center"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="40dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/donation_locations_rv"
+            <ImageView
+                android:id="@+id/location_error_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/no_location_access" />
+
+            <TextView
+                android:id="@+id/location_error_text_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/no_location_header_text"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/location_error_text_body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="270dp"
+                android:text="@string/no_location_body_text"
+                android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/location_try_again"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorAccent"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="@string/location_list_try_agian"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/list_view_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingTop="10dp">
 
-        </android.support.v7.widget.RecyclerView>
-    </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:text="@string/list_explanation_text_header"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:maxWidth="350dp"
+                android:text="@string/list_explanation_text"
+                android:textAlignment="center" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/donation_locations_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>

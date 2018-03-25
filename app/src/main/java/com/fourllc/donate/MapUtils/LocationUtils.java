@@ -59,14 +59,15 @@ public class LocationUtils {
         Location destination = new Location("");
         destination.setLatitude(donationLocation.getLat());
         destination.setLongitude(donationLocation.getLng());
+        //get the distance in KM (system default)
         float distance = userLocation.distanceTo(destination)/1000;
+        //TODO change this to check sharedPreferences if useMiles is true
         boolean useMiles = true;
+        DecimalFormat df = new DecimalFormat("#");
         if(useMiles){
             double miles = kmToMiles(distance);
-            DecimalFormat df = new DecimalFormat("#");
             return df.format(miles) + "\nMILES";
         }else{
-            DecimalFormat df = new DecimalFormat("#");
             return df.format(distance) + "\nKM";
         }
     }

@@ -1,8 +1,6 @@
 package com.fourllc.donate.model;
 
-/**
- * Created by aaronbrecher on 3/3/18.
- */
+
 
 import java.util.List;
 import com.google.gson.annotations.Expose;

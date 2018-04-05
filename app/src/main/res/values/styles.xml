@@ -67,8 +67,12 @@
         <item name="android:layout_gravity">center</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
-    
-    <style name="progressMoney" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
-        <item name="android:progressDrawable">@drawable/custom_progress_bar_horizontal</item>
+
+    <style name="mainDonateButtons">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:textColor">@android:color/white</item>
     </style>
 </resources>

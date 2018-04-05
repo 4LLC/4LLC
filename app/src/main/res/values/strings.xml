@@ -47,7 +47,7 @@
     </string>
 
     <!--dummy values for campaign will get real values from DB-->
-    <string name="header_heading">Luekemia &amp; Lymphoma Man Of The Year Campaign</string>
+    <string name="header_sub_heading">Man Of The Year Campaign</string>
     <string name="header_body">Join us as we lead the battle to defeat cancer. Help the Luekemia &amp; Lymphoma Society.</string>
     <string name="header_run_by">Run by LLS</string>
     <string name="header_charity">Charity Registration No. 277424</string>
@@ -56,5 +56,7 @@
     </string>
     <string name="donated_money_progress_text">$25,000 Raised of $75,000 Goal</string>
     <string name="donated_blood_progress_text">10.5 Liters donated of 25 Liter Goal</string>
+    <string name="header_heading">Leukemia &amp; Lymphoma Society</string>
+    <string name="thank_you_label">Thank You</string>
 
 </resources>

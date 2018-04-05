@@ -18,9 +18,6 @@ import java.util.List;
 
 import static android.content.ContentValues.TAG;
 
-/**
- * Created by aaronbrecher on 3/4/18.
- */
 
 public class BloodPlacesRecyclerAdapter extends RecyclerView.Adapter<BloodPlacesRecyclerAdapter.ViewHolder>{
     private List<Result> mLocations;

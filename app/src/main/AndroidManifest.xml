@@ -66,13 +66,14 @@
         </activity>
         <activity android:name=".paymentReceivedActivity"
             android:label="@string/thank_you_label"
+            android:theme="@style/AppTheme"
             android:parentActivityName=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data
-                    android:host="donate"
+                    android:host="donationreceived"
                     android:scheme="fourllc" />
             </intent-filter>
         </activity>

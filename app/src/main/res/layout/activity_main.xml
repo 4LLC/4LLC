@@ -238,18 +238,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="#f2f2f2"
+        android:background="#f4f4f4"
         android:elevation="8dp"
         android:gravity="end"
         android:orientation="horizontal"
         android:padding="@dimen/margin_horizontal_large">
 
         <Button
+            android:id="@+id/donateMoneyButton"
             style="@style/mainDonateButtons"
             android:background="@color/colorAccent"
             android:text="Donate Money" />
 
         <Button
+            android:id="@+id/donateBloodButton"
             style="@style/mainDonateButtons"
             android:layout_marginLeft="@dimen/margin_horizontal_large"
             android:background="@color/colorPrimary"

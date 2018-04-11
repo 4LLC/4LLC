@@ -19,6 +19,6 @@ import retrofit2.http.Query;
  * @Param location - will be the supplied location to search nearby
  */
 public interface PlacesService {
-    @GET("/maps/api/place/nearbysearch/json?&radius=40000&keyword=blood+donation+center&key=" + ApiUtils.API_KEY)
+    @GET(GoogleApiUtils.PLACES_PATH)
     Call<PlacesAnswerResponse> getPlaces(@Query("location") String location);
 }

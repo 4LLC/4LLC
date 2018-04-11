@@ -7,7 +7,7 @@ import android.util.Log;
 
 import com.fourllc.donate.model.PlacesAnswerResponse;
 import com.fourllc.donate.model.Result;
-import com.fourllc.donate.remote.ApiUtils;
+import com.fourllc.donate.remote.GoogleApiUtils;
 import com.fourllc.donate.remote.PlacesService;
 
 import java.util.List;
@@ -60,7 +60,7 @@ public class BloodLocationsViewModel extends ViewModel{
     }
 
     public PlacesService getService() {
-        if(mService == null) mService = ApiUtils.getPlacesService();
+        if(mService == null) mService = GoogleApiUtils.getPlacesService();
         return mService;
     }
 

@@ -59,4 +59,11 @@
     <string name="header_heading">Leukemia &amp; Lymphoma Society</string>
     <string name="thank_you_label">Thank You</string>
 
+    <!--strings for the donate money thank you page-->
+    <string name="donation_received_header">Thank You</string>
+    <string name="donation_received_body">4LLC thanks you for your generous donation. You will be recieving an email from JustGiving.com with further details.</string>
+    <string name="donation_received_reference">Donation Reference - </string>
+    <string name="donation_received_amount">Donation Amount - </string>
+    <string name="donation_received_date">Donation Date - </string>
+    <string name="donation_received_name">Donor Name - </string>
 </resources>

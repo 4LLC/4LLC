@@ -1,5 +1,11 @@
 package com.fourllc.donate.model.justGivingModels;
 
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
+
 /**
  * Created by aaronbrecher on 4/10/18.
  */
@@ -39,7 +45,16 @@ public class Donation {
     }
 
     public String getDonationDate() {
-        return donationDate;
+        long unixDate = Long.parseLong(donationDate.substring(6, donationDate.length()-7)) ;
+        return convertAndFormatDate(unixDate);
+    }
+
+    private String convertAndFormatDate(long unixDate){
+        TimeZone local = TimeZone.getDefault();
+        int offset = local.getOffset(unixDate);
+        Date date = new Date(unixDate + offset);
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("EEE, MMM d, yyyy 'at' hh:mm:ss a", Locale.getDefault());
+        return dateFormatter.format(date);
     }
 
     public void setDonationDate(String donationDate) {
@@ -63,7 +78,9 @@ public class Donation {
     }
 
     public String getDonorLocalAmount() {
-        return donorLocalAmount;
+        DecimalFormat df = new DecimalFormat("#.##");
+        Float num = Float.parseFloat(donorLocalAmount);
+        return df.format(num);
     }
 
     public void setDonorLocalAmount(String donorLocalAmount) {

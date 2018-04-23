@@ -23,7 +23,8 @@ public class JustGivingApiUtils {
     public static final String API_SECRET_KEY = "6719d292";
 
     private static final String API_BASE_URL = "https://api.justgiving.com";
-    public static final String API_DONATION_BY_ID = "/v1/donation";
+    public static final String API_DONATION_BY_ID = "/v1/donation/";
+    public static final String API_DONATION_TOTAL = "/v1/donationtotal/ref/" + SDI_DONATION_REFERENCE + "?currencyCode=USD";
 
     public static JustGivingService getJustGivingService(){
         return RetrofitClient.getClient(API_BASE_URL).create(JustGivingService.class);

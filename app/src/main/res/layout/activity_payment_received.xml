@@ -1,58 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:paddingLeft="@dimen/margin_horizontal_large"
-    android:paddingRight="@dimen/margin_horizontal_large"
-    tools:context="com.fourllc.donate.paymentReceivedActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/donation_received_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/thank_you_money_image" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/margin_horizontal_large"
+        android:paddingRight="@dimen/margin_horizontal_large"
+        tools:context="com.fourllc.donate.paymentReceivedActivity">
 
-    <TextView
-        android:id="@+id/donation_received_header"
-        style="@style/Base.TextAppearance.AppCompat.Display1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_vertical_large"
-        android:text="@string/donation_received_header" />
+        <ImageView
+            android:id="@+id/donation_received_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/thank_you_money_image" />
 
-    <TextView
-        android:id="@+id/donation_received_body"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/Roboto_Light"
-        android:paddingBottom="30dp"
-        android:text="@string/donation_received_body"
-        android:textAlignment="center"
-        android:textSize="13sp" />
+        <TextView
+            android:id="@+id/donation_received_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_vertical_large"
+            android:text="@string/donation_received_header"
+            android:textColor="#000"
+            android:textSize="22sp" />
 
-    <TextView
-        android:id="@+id/donation_received_reference"
-        style="@style/donationInformationTextView"
-        android:text="@string/donation_received_reference" />
+        <TextView
+            android:id="@+id/donation_received_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:paddingBottom="30dp"
+            android:text="@string/donation_received_body"
+            android:textAlignment="center"
+            android:textColor="#000"
+            android:textSize="13sp" />
 
-    <TextView
-        android:id="@+id/donation_received_amount"
-        style="@style/donationInformationTextView"
-        android:text="@string/donation_received_amount" />
+        <TextView
+            android:id="@+id/donation_received_reference"
+            style="@style/donationInformationTextView"
+            android:text="@string/donation_received_reference" />
 
-    <TextView
-        android:id="@+id/donation_received_name"
-        style="@style/donationInformationTextView"
-        android:text="@string/donation_received_name" />
+        <TextView
+            android:id="@+id/donation_received_amount"
+            style="@style/donationInformationTextView"
+            android:text="@string/donation_received_amount" />
 
-    <TextView
-        android:id="@+id/donation_received_date"
-        style="@style/donationInformationTextView"
-        android:text="@string/donation_received_date" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/donation_received_name"
+            style="@style/donationInformationTextView"
+            android:text="@string/donation_received_name" />
+
+        <TextView
+            android:id="@+id/donation_received_date"
+            style="@style/donationInformationTextView"
+            android:text="@string/donation_received_date" />
+
+
+    </LinearLayout>
+</layout>

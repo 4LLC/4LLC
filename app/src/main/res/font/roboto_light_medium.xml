@@ -2,17 +2,17 @@
 <font-family xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <font
-        android:font="@font/Roboto_Light"
+        android:font="@font/roboto_light"
         android:fontStyle="normal"
         android:fontWeight="200"
-        app:font="@font/Roboto_Medium"
+        app:font="@font/roboto_medium"
         app:fontStyle="normal"
         app:fontWeight="400" />
     <font
-        android:font="@font/Roboto_Medium"
+        android:font="@font/roboto_medium"
         android:fontStyle="italic"
         android:fontWeight="600"
-        app:font="@font/Roboto_Medium"
+        app:font="@font/roboto_medium"
         app:fontStyle="normal"
         app:fontWeight="400" />
 </font-family>

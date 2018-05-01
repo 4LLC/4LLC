@@ -20,15 +20,14 @@ import retrofit2.Response;
 import static android.content.ContentValues.TAG;
 
 
-/**
- * Created by aaronbrecher on 4/20/18.
- */
 
 public class MainActivityViewModel extends ViewModel {
 
     public static final String PROGRESS_QUERY = "api-query-progress";
     public static final long DELAY_TIME = 60000;
 
+    // LiveData object to update the totalDonations for use in updating the
+    // progress bar MainActivity will observe this data
     private MutableLiveData<Double> mDonationTotal;
     private Timer mTimer;
 
@@ -79,5 +78,9 @@ public class MainActivityViewModel extends ViewModel {
         mTimer.schedule(task, DELAY_TIME);
     }
 
-
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        if(mTimer != null) mTimer.cancel();
+    }
 }

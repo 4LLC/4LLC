@@ -1,4 +1,4 @@
-package com.fourllc.donate.model;
+package com.fourllc.donate.model.GooglePlacesModels;
 
 /**
  * Created by aaronbrecher on 3/3/18.
@@ -7,7 +7,7 @@ package com.fourllc.donate.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Southwest {
+public class PlacesLocation {
 
     @SerializedName("lat")
     @Expose

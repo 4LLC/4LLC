@@ -8,14 +8,9 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
-import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 
-import com.fourllc.donate.model.PlacesLocation;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.fourllc.donate.model.GooglePlacesModels.PlacesLocation;
 
 import java.io.IOException;
 import java.text.DecimalFormat;

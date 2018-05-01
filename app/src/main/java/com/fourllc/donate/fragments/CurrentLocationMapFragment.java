@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,16 +13,12 @@ import android.view.ViewGroup;
 import com.fourllc.donate.BloodLocationsViewModel;
 import com.fourllc.donate.MapUtils.MapUtils;
 import com.fourllc.donate.R;
-import com.fourllc.donate.model.Result;
-import com.google.android.gms.maps.CameraUpdateFactory;
+import com.fourllc.donate.model.GooglePlacesModels.Result;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.Marker;
 
 import java.util.List;
-
-import static android.content.ContentValues.TAG;
 
 /**
  * This class is used to get the list of blood donation centers based

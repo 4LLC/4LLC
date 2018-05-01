@@ -25,6 +25,9 @@ public class JustGivingApiUtils {
     private static final String API_BASE_URL = "https://api.justgiving.com";
     public static final String API_DONATION_BY_ID = "/v1/donation/";
     public static final String API_DONATION_TOTAL = "/v1/donationtotal/ref/" + SDI_DONATION_REFERENCE + "?currencyCode=USD";
+    private static final String API_PAGE_NAME = "ryan-cybulski";
+    public static final String API_PAGE_DETAILS = "/v1/fundraising/pages/" + API_PAGE_NAME;
+
 
     public static JustGivingService getJustGivingService(){
         return RetrofitClient.getClient(API_BASE_URL).create(JustGivingService.class);

@@ -1,7 +1,7 @@
 package com.fourllc.donate.remote;
 
 
-import com.fourllc.donate.model.PlacesAnswerResponse;
+import com.fourllc.donate.model.GooglePlacesModels.PlacesAnswerResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

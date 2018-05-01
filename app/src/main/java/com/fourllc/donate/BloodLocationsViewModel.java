@@ -5,8 +5,8 @@ import android.arch.lifecycle.ViewModel;
 import android.location.Location;
 import android.util.Log;
 
-import com.fourllc.donate.model.PlacesAnswerResponse;
-import com.fourllc.donate.model.Result;
+import com.fourllc.donate.model.GooglePlacesModels.PlacesAnswerResponse;
+import com.fourllc.donate.model.GooglePlacesModels.Result;
 import com.fourllc.donate.remote.GoogleApiUtils;
 import com.fourllc.donate.remote.PlacesService;
 

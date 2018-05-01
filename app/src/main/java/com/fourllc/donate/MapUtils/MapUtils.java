@@ -1,7 +1,7 @@
 package com.fourllc.donate.MapUtils;
 
-import com.fourllc.donate.model.PlacesLocation;
-import com.fourllc.donate.model.Result;
+import com.fourllc.donate.model.GooglePlacesModels.PlacesLocation;
+import com.fourllc.donate.model.GooglePlacesModels.Result;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;

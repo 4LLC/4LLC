@@ -2,6 +2,7 @@ package com.fourllc.donate.remote;
 
 import com.fourllc.donate.model.justGivingModels.Donation;
 import com.fourllc.donate.model.justGivingModels.DonationTotal;
+import com.fourllc.donate.model.justGivingModels.pageDetails.PageDetails;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -26,4 +27,9 @@ public interface JustGivingService {
     })
     @GET(JustGivingApiUtils.API_DONATION_TOTAL)
     Call<DonationTotal>getDonationsTotal();
+
+    @GET(JustGivingApiUtils.API_PAGE_DETAILS)
+    Call<PageDetails>getPageDetails();
+
+
 }

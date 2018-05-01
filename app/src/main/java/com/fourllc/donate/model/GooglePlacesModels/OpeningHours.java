@@ -1,4 +1,4 @@
-package com.fourllc.donate.model;
+package com.fourllc.donate.model.GooglePlacesModels;
 
 /**
  * Created by aaronbrecher on 3/3/18.

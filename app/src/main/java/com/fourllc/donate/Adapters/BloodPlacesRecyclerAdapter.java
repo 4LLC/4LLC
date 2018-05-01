@@ -11,8 +11,8 @@ import android.widget.TextView;
 
 import com.fourllc.donate.MapUtils.LocationUtils;
 import com.fourllc.donate.R;
-import com.fourllc.donate.model.OpeningHours;
-import com.fourllc.donate.model.Result;
+import com.fourllc.donate.model.GooglePlacesModels.OpeningHours;
+import com.fourllc.donate.model.GooglePlacesModels.Result;
 
 import java.util.List;
 
